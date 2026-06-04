@@ -1,239 +1,364 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Formation gestion des conflits à Saint-Étienne | 3H Conseils</title>
-  <meta name="description" content="Formation gestion des conflits à Saint-Étienne (Loire). Prévenir, désamorcer et réguler les tensions en entreprise. Intra, présentiel et distanciel.">
+  <title>Guide gratuit : Les 7 erreurs humaines qui coûtent le plus cher | 3H Conseils</title>
+  <meta name="description" content="Téléchargez gratuitement le guide PDF pour managers et dirigeants : les 7 erreurs humaines les plus coûteuses et comment les éviter concrètement.">
+  <meta property="og:title" content="Guide gratuit : Les 7 erreurs humaines qui coûtent le plus cher aux organisations">
+  <meta property="og:description" content="Guide pratique PDF pour managers et dirigeants. Téléchargement immédiat et gratuit.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.3hconseils.com/livre-blanc.html">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="canonical" href="https://www.3hconseils.com/livre-blanc.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@400;700&display=swap">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Styles spécifiques tunnel livre blanc */
+    .lb-page { background: var(--black-card); min-height: 100vh; }
 
-<link rel="canonical" href="https://www.3hconseils.com/formation-gestion-conflits-saint-etienne.html">
+    .lb-top-bar {
+      background: var(--black-card);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      padding: 14px 24px;
+      text-align: center;
+    }
+    .lb-top-bar img { height: 60px; width: auto; }
+
+    .lb-hero-section {
+      background: linear-gradient(135deg, #2a2f3d 0%, var(--black-card) 60%);
+      padding: 60px 24px 0;
+      text-align: center;
+    }
+    .lb-eyebrow {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font-title);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .lb-hero-section h1 {
+      color: #fff;
+      font-size: clamp(26px, 4vw, 40px);
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+    .lb-hero-section .lb-subtitle {
+      color: rgba(255,255,255,0.75);
+      font-size: 18px;
+      max-width: 580px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+    .lb-targets {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .lb-target-pill {
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Formulaire flottant */
+    .lb-form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px;
+      max-width: 480px;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      position: relative;
+      top: 30px;
+    }
+    .lb-form-card .form-title {
+      font-family: var(--font-title);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+    .lb-form-card .form-subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .lb-form-card .btn-primary { width: 100%; justify-content: center; font-size: 16px; padding: 16px; }
+    .lb-privacy {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .lb-privacy svg { flex-shrink: 0; width: 14px; height: 14px; margin-top: 1px; }
+
+    /* Section bénéfices */
+    .lb-content-section {
+      background: var(--white);
+      padding: 80px 24px 64px;
+      margin-top: 30px;
+    }
+    .lb-content-inner { max-width: 820px; margin: 0 auto; }
+    .lb-content-inner h2 { text-align: center; margin-bottom: 40px; font-size: clamp(22px, 3vw, 30px); }
+
+    .lb-erreurs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .lb-erreur-item {
+      background: var(--black-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .lb-erreur-num {
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 15px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .lb-erreur-item h3 { font-size: 14px; margin: 0 0 4px; color: var(--black); }
+    .lb-erreur-item p { font-size: 13px; color: var(--muted); margin: 0; max-width: none; }
+
+    /* Profil auteur */
+    .lb-author {
+      background: var(--yellow-light);
+      border: 1px solid #ffe780;
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .lb-author img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+    }
+    .lb-author-info h3 { margin: 0 0 4px; font-size: 16px; }
+    .lb-author-info p { margin: 0; font-size: 14px; color: var(--muted); max-width: none; }
+
+    @media (max-width: 600px) {
+      .lb-form-card { padding: 24px 18px; }
+      .lb-author { flex-direction: column; align-items: flex-start; gap: 14px; }
+    }
+
+    /* CTA bas de page */
+    .lb-bottom-cta {
+      background: var(--black-card);
+      padding: 52px 24px;
+      text-align: center;
+    }
+    .lb-bottom-cta h2 { color: #fff; margin-bottom: 14px; }
+    .lb-bottom-cta p { color: rgba(255,255,255,0.75); max-width: 500px; margin: 0 auto 24px; }
+  </style>
 </head>
+<body class="lb-page">
 
-<body>
-  <header class="header">
-    <nav class="nav">
-      <div class="navlinks">
-        <a href="formations.html">Formations</a>
-        <a href="coaching.html">Coaching</a>
-        <a href="preparation-mentale.html">Préparation mentale</a>
-        <a href="qualiopi-opco.html">Qualiopi & OPCO</a>
-        <a href="methodes.html">Méthodes</a>
-        <a href="resultats.html">Résultats</a>
-        <a href="qui-sommes-nous.html">Qui sommes-nous</a>
-        <a href="contact.html" class="btn btn-primary">Diagnostic 20 min</a>
-        <a href="quiz.html" data-quiz-open class="smalllink">Quiz</a>
-      </div>
-    </nav>
-  </header>
-
-  <div class="site-brand">
-    <a href="index.html" aria-label="Retour à l’accueil">
-      <img src="assets/img/logo-3hconseils.png" alt="3H Conseils" width="110" height="110">
+  <!-- Barre logo simplifiée (pas de nav sur landing) -->
+  <div class="lb-top-bar">
+    <a href="index.html" aria-label="3H Conseils – retour à l'accueil">
+      <img src="assets/img/logo-3hconseils.png" alt="3H Conseils – Coaching &amp; Formation" width="110" height="110">
     </a>
   </div>
 
-  <main class="container">
-    <section class="hero">
-      <span class="kicker">Formation · Gestion des conflits · Saint-Étienne</span>
-      <h1>Formation gestion des conflits à Saint-Étienne</h1>
-      <p class="lead">
-        Les tensions non régulées fragilisent la communication, la coopération et la performance.
-        Avec cette formation, nous vous aidons à prévenir l’escalade, à clarifier les situations et à agir avec une posture plus stable.
+  <main id="main-content">
+
+    <!-- HERO SOMBRE -->
+    <section class="lb-hero-section" aria-labelledby="lb-main-title">
+      <span class="lb-eyebrow">Guide PDF gratuit</span>
+      <h1 id="lb-main-title">Les 7 erreurs humaines qui coûtent le plus cher aux organisations</h1>
+      <p class="lb-subtitle">
+        Un guide pratique pour managers et dirigeants : identifier, comprendre et corriger les dysfonctionnements humains qui plombent la performance collective.
       </p>
-
-      <div class="actions">
-        <a class="btn btn-primary" href="contact.html">Demander un diagnostic 20 min</a>
-        <a class="btn btn-ghost" href="formations.html">Voir toutes les formations</a>
-        <a class="btn btn-ghost" href="qualiopi-opco.html">Financement OPCO & Qualiopi</a>
+      <div class="lb-targets" aria-label="Ce guide est destiné à">
+        <span class="lb-target-pill">👔 Dirigeants</span>
+        <span class="lb-target-pill">📋 Managers</span>
+        <span class="lb-target-pill">🏢 Responsables RH</span>
+        <span class="lb-target-pill">🎯 Chefs d'équipe</span>
       </div>
-    </section>
 
-    <section class="section">
-      <h2>Pourquoi se former à la gestion des conflits en entreprise&nbsp;?</h2>
-      <p>
-        À Saint-Étienne et dans la Loire, les équipes font face à des situations relationnelles complexes&nbsp;: désaccords persistants,
-        tensions hiérarchiques, non-dits, communication dégradée. Sans méthode, ces situations s’installent et coûtent cher&nbsp;:
-        temps perdu, démotivation, turnover, décisions différées.
-      </p>
-      <ul class="bullets">
-        <li>Repérer les signaux faibles et prévenir l’escalade</li>
-        <li>Clarifier les faits, les besoins et les responsabilités</li>
-        <li>Réguler une situation sensible sans abîmer la relation</li>
-        <li>Installer des repères simples pour durer</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Objectifs de la formation</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Comprendre</h3>
-          <p>Identifier les mécanismes du conflit&nbsp;: perceptions, émotions, enjeux, positions et escalade.</p>
-        </div>
-        <div class="card">
-          <h3>Ajuster la posture</h3>
-          <p>Choisir une communication plus claire et plus assertive, adaptée au contexte et à l’interlocuteur.</p>
-        </div>
-        <div class="card">
-          <h3>Désamorcer</h3>
-          <p>Conduire un échange de régulation avec une méthode simple&nbsp;: cadrage, reformulation, décision, suivi.</p>
+      <!-- FORMULAIRE BREVO -->
+      <div class="lb-form-card" role="region" aria-labelledby="form-title">
+        <p class="form-title" id="form-title">Recevoir le guide gratuitement</p>
+        <p class="form-subtitle">Accès immédiat. Aucun spam. Désabonnement en 1 clic.</p>
+        <iframe
+          width="540"
+          height="305"
+          src="https://cafe9f14.sibforms.com/v2/serve/MUIFAJgZ76-n03mrar3iv9TBtEUM4o1j5S72NxiOEQRX3UVDZA1XH1lSGhdq07HADRSY5SVkEIqeZh16cRJa34JSLJz6F9wYFH2RPwyLCNcwXVpjQ00b6NM67dUjc1kI0YZu467Kp5XtxgRV5-a3xi6uuFAqS_rt8-SK5BWGi-spIK2eHoFMexlLsU16arpZ3ngI427lG6n3tk1CcQ=="
+          frameborder="0"
+          scrolling="auto"
+          allowfullscreen
+          title="Formulaire de téléchargement du guide gratuit 3H Conseils"
+          style="display: block; margin-left: auto; margin-right: auto; max-width: 100%;">
+        </iframe>
+        <div class="lb-privacy" style="margin-top:12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Données protégées — jamais revendues. Conforme RGPD.
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2>Contenus abordés</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Repères opérationnels</h3>
-          <ul class="bullets">
-            <li>Typologie des conflits en entreprise</li>
-            <li>Émotions, perceptions, malentendus et interprétations</li>
-            <li>Communication assertive&nbsp;: dire, cadrer, recadrer</li>
-            <li>Conflits hiérarchiques&nbsp;: posture et légitimité</li>
-            <li>Outils de régulation et de médiation</li>
-          </ul>
+    <!-- CONTENU BÉNÉFICES -->
+    <section class="lb-content-section" aria-labelledby="lb-benefices-title">
+      <div class="lb-content-inner">
+
+        <h2 id="lb-benefices-title">Ce que vous allez découvrir dans ce guide</h2>
+
+        <div class="lb-erreurs-grid">
+          <div class="lb-erreur-item">
+            <span class="lb-erreur-num">1</span>
+            <div>
+              <h3>Rôles flous</h3>
+              <p>Pourquoi les attentes non clarifiées détruisent la collaboration.</p>
+            </div>
+          </div>
+          <div class="lb-erreur-item">
+            <span class="lb-erreur-num">2</span>
+            <div>
+              <h3>Précipitation</h3>
+              <p>Confondre vitesse et efficacité — et ses conséquences réelles.</p>
+            </div>
+          </div>
+          <div class="lb-erreur-item">
+            <span class="lb-erreur-num">3</span>
+            <div>
+              <h3>Émotions non régulées</h3>
+              <p>Laisser les émotions piloter les décisions et les échanges.</p>
+            </div>
+          </div>
+          <div class="lb-erreur-item">
+            <span class="lb-erreur-num">4</span>
+            <div>
+              <h3>Conversations évitées</h3>
+              <p>Reporter les échanges difficiles — et pourquoi ça coûte cher.</p>
+            </div>
+          </div>
+          <div class="lb-erreur-item">
+            <span class="lb-erreur-num">5</span>
+            <div>
+              <h3>Priorités absentes</h3>
+              <p>Multiplier les tâches sans hiérarchie : illusion d'activité, manque de résultats.</p>
+            </div>
+          </div>
+          <div class="lb-erreur-item">
+            <span class="lb-erreur-num">6</span>
+            <div>
+              <h3>Posture non travaillée</h3>
+              <p>Confondre compétence technique et compétence managériale.</p>
+            </div>
+          </div>
+          <div class="lb-erreur-item">
+            <span class="lb-erreur-num">7</span>
+            <div>
+              <h3>Performance linéaire</h3>
+              <p>Attendre une progression continue — et mal lire les plateaux.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Transfert au terrain</h3>
-          <p>
-            Nous travaillons à partir de situations réelles de l’entreprise&nbsp;: cas concrets, mises en situation,
-            entraînement guidé, plan d’action. L’objectif est l’usage après la formation, pas la théorie pour la théorie.
-          </p>
+        <!-- Auteur -->
+        <div class="lb-author" role="complementary" aria-label="À propos de l'auteur">
+          <img src="assets/img/portrait-hugues.png" alt="Hugues Hippler – fondateur de 3H Conseils" width="80" height="80">
+          <div class="lb-author-info">
+            <h3>Hugues Hippler – Fondateur de 3H Conseils</h3>
+            <p>Coach professionnel certifié, formateur et préparateur mental. Certifications FACS Paul-Ekman, PNL, Voltaire 928/1000. Plus de 16 ans d'expérience terrain auprès de dirigeants, managers et équipes.</p>
+          </div>
         </div>
+
+        <div class="callout">
+          <p><strong>Ce guide est fait pour vous si</strong> vous êtes manager, dirigeant ou responsable RH et souhaitez agir concrètement sur les leviers humains de la performance — avec un langage accessible, des symptômes clairs et des solutions immédiatement applicables.</p>
+        </div>
+
       </div>
     </section>
 
-    <section class="section">
-      <h2>Modalités à Saint-Étienne</h2>
-      <ul class="bullets">
-        <li>Format&nbsp;: intra-entreprise</li>
-        <li>Lieu&nbsp;: Saint-Étienne, Loire, Auvergne-Rhône-Alpes</li>
-        <li>Distanciel&nbsp;: possible selon vos contraintes</li>
-        <li>Durée&nbsp;: adaptable selon les objectifs</li>
-      </ul>
-
-      <div class="actions">
-        <a class="btn btn-primary" href="contact.html">Parler de votre contexte (20 min)</a>
-        <a class="btn btn-ghost" href="methodes.html">Voir les méthodes d’intervention</a>
-      </div>
+    <!-- CTA SECONDAIRE -->
+    <section class="lb-bottom-cta" aria-labelledby="lb-cta-title">
+      <h2 id="lb-cta-title">Vous voulez aller plus loin ?</h2>
+      <p>Un diagnostic gratuit de 20 minutes pour identifier les leviers prioritaires dans votre organisation.</p>
+      <a href="contact.html" class="btn-primary">Réserver un diagnostic gratuit</a>
+      <p style="margin-top:14px;"><a href="index.html" style="color:rgba(255,255,255,0.5); font-size:13px;">← Retour à l'accueil</a></p>
     </section>
 
-    <section class="section">
-      <h2>Pour qui&nbsp;?</h2>
-      <div class="card">
-        <p style="margin-top:0">
-          Dirigeants, managers, équipes opérationnelles, fonctions support, commerciaux, techniciens&nbsp;:
-          nous adaptons les exemples, les outils et les scénarios au public et à la réalité de l’entreprise.
-        </p>
-        <ul class="bullets">
-          <li>Objectif&nbsp;: gagner en clarté, en stabilité et en efficacité relationnelle</li>
-          <li>Approche&nbsp;: simple, concrète, orientée solution, sans promesse miracle</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Questions fréquentes</h2>
-      <div class="card">
-        <ul class="bullets">
-          <li>Cette formation convient-elle à des managers récemment nommés&nbsp;?</li>
-          <li>Pouvons-nous travailler sur des cas concrets issus de notre entreprise&nbsp;?</li>
-          <li>Le financement OPCO est-il possible selon notre situation&nbsp;?</li>
-          <li>Intervenez-vous uniquement à Saint-Étienne&nbsp;?</li>
-          <li>Quel format est le plus adapté à nos contraintes (présentiel / distanciel)&nbsp;?</li>
-        </ul>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-
-      <div class="footer-section">
-        <h3>3H Conseils</h3>
-        <p>
-          L’Étrat&nbsp;(42) · Auvergne-Rhône-Alpes · France entière<br>
-          <a href="mailto:hugues.hippler@3hconseils.com">hugues.hippler@3hconseils.com</a> ·
-          <a href="tel:+33609982202">06&nbsp;09&nbsp;98&nbsp;22&nbsp;02</a>
-        </p>
-      </div>
-
-      <div class="footer-section">
-        <h3>Navigation</h3>
-        <ul>
-          <li><a href="formations.html">Formations</a></li>
-          <li><a href="coaching.html">Coaching</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h3>Orientation</h3>
-        <ul>
-          <li><a href="quiz.html">Quiz d’orientation</a></li>
-          <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h3>Conformité</h3>
-        <ul>
-          <li><a href="mentions-legales.html">Mentions légales</a></li>
-          <li><a href="confidentialite.html">Confidentialité&nbsp;(RGPD)</a></li>
-          <li><a href="cookies.html">Cookies</a></li>
-          <li><a href="accessibilite-handicap.html">Accessibilité&nbsp;&amp;&nbsp;handicap</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="container footer-bottom">
-      <p>© <span id="year"></span> 3H Conseils</p>
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/in/hugues-hippler/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5ZM.5 23.5h4V7.98h-4V23.5ZM8 7.98h3.83v2.12h.05c.53-1 1.82-2.12 3.74-2.12 4 0 4.74 2.63 4.74 6.04v9.48h-4v-8.4c0-2-.04-4.57-2.78-4.57-2.78 0-3.2 2.17-3.2 4.42v8.55H8V7.98Z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-
-    <p style="margin:10px 0 0;font-size:.85rem;color:#6b7280;">
-      <a href="formation-coaching-professionnel-saint-etienne-loire.html" style="color:inherit;text-decoration:none;">
-        Formation &amp; coaching à Saint-Étienne (Loire)
-      </a>
-    </p>
+  <!-- Footer simplifié (landing page) -->
+  <footer style="background:var(--black); padding:20px 24px; text-align:center; font-size:13px; color:rgba(255,255,255,0.4);" role="contentinfo">
+    © <span id="year"></span> 3H Conseils –
+    <a href="mentions-legales.html" style="color:rgba(255,255,255,0.4);">Mentions légales</a> ·
+    <a href="confidentialite.html" style="color:rgba(255,255,255,0.4);">RGPD</a>
   </footer>
 
-  <div class="quiz-overlay" id="quizOverlay" role="dialog" aria-modal="true" aria-label="Quiz d'orientation">
-    <div class="quiz-modal">
-      <div class="quiz-top">
-        <strong>Vous orienter efficacement en 1 minute</strong>
-        <button class="quiz-close" data-quiz-close aria-label="Fermer">✕</button>
-      </div>
-      <div class="quiz-body">
-        <p>
-          Un court quiz (1 minute) pour vous diriger vers la page la plus utile.
-          Aucune promesse marketing, juste de l’orientation.
-        </p>
-      </div>
-      <div class="quiz-actions">
-        <a class="btn btn-primary" href="quiz.html">Commencer le quiz</a>
-        <a class="btn btn-ghost" href="contact.html" onclick="if (window.ThreeHQuiz && typeof ThreeHQuiz.setDoneQuiz === 'function') { ThreeHQuiz.setDoneQuiz(); }">Aller au contact</a>
-      </div>
-    </div>
-  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  <script src="assets/js/quiz.js"></script>
+    // Validation formulaire WCAG
+    document.getElementById('lbForm').addEventListener('submit', function(e) {
+      let valid = true;
+      const prenom = document.getElementById('lb-prenom');
+      const email  = document.getElementById('lb-email');
+      const consent= document.getElementById('lb-consent');
+
+      const errPrenom = document.getElementById('err-prenom');
+      const errEmail  = document.getElementById('err-email');
+
+      // Reset
+      [errPrenom, errEmail].forEach(el => el.classList.remove('visible'));
+      [prenom, email].forEach(el => el.removeAttribute('aria-invalid'));
+
+      if (!prenom.value.trim()) {
+        errPrenom.classList.add('visible');
+        prenom.setAttribute('aria-invalid','true');
+        prenom.focus();
+        valid = false;
+      }
+      if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        errEmail.classList.add('visible');
+        email.setAttribute('aria-invalid','true');
+        if(valid) email.focus();
+        valid = false;
+      }
+      if (!consent.checked) {
+        alert('Veuillez accepter la politique de confidentialité pour continuer.');
+        if(valid) consent.focus();
+        valid = false;
+      }
+      if (!valid) e.preventDefault();
+    });
+  </script>
 </body>
 </html>
