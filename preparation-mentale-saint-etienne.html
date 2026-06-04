@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diagnostic gratuit 20 minutes | 3H Conseils</title>
+
+  <meta name="description" content="Réservez un diagnostic gratuit de 20 minutes pour clarifier vos enjeux en formation, coaching ou préparation mentale et repartir avec des pistes concrètes.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+<link rel="canonical" href="https://www.3hconseils.com/page-capture.html">
+</head>
+
+<body>
+
+<header class="site-header header-enhanced">
+  <div class="container">
+    <div class="navbar header-nav">
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" onclick="toggleMenu()">
+        ☰ Menu
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="formations.html">Formations</a>
+        <a href="coaching.html">Coaching</a>
+        <a href="preparation-mentale.html">Préparation mentale</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="qui-sommes-nous.html">À propos</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("is-open");
+    }
+  </script>
+</header>
+
+<div class="site-brand brand-enhanced">
+  <a href="index.html" aria-label="Retour à l’accueil">
+    <img src="assets/img/logo-3hconseils.png" alt="3H Conseils - Diagnostic gratuit" width="110" height="110">
+  </a>
+</div>
+
+<main class="container">
+
+  <!-- HERO CAPTURE -->
+  <section class="hero">
+    <h1>Diagnostic gratuit 20 minutes</h1>
+
+    <p class="hero-subtitle">
+      Un échange court, structuré et sans engagement pour clarifier vos enjeux  
+      en formation, coaching ou préparation mentale, et repartir avec des pistes concrètes.
+    </p>
+
+    <p>
+      Pas de démarchage agressif, pas de promesse irréaliste :  
+      simplement un temps pour mettre à plat la situation et voir si je peux vous être utile.
+    </p>
+  </section>
+
+  <!-- POUR QUI -->
+  <section class="audience">
+    <h2>Ce diagnostic est fait pour vous si…</h2>
+
+    <ul class="method-list">
+      <li>Vous sentez que “quelque chose coince” dans la communication, le management ou l’organisation.</li>
+      <li>Vous hésitez entre formation, coaching ou autre dispositif.</li>
+      <li>Vous avez besoin d’un regard extérieur pour clarifier les priorités.</li>
+      <li>Vous voulez des pistes concrètes, pas un discours théorique.</li>
+    </ul>
+  </section>
+
+  <!-- FORMULAIRE -->
+  <section class="capture-form">
+    <h2>Réserver votre diagnostic</h2>
+    <p>Remplissez ce formulaire, je vous recontacte pour fixer un créneau.</p>
+
+    <!--
+      Si tu utilises Netlify Forms, tu peux ajouter :
+      data-netlify="true" et un input type="hidden" name="form-name" value="diagnostic-20min"
+    -->
+    <form method="post" action="contact.html" class="form">
+      <div class="form-group">
+        <label for="nom">Nom / Prénom</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email professionnel</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone">
+      </div>
+
+      <div class="form-group">
+        <label for="sujet">Votre situation en quelques mots</label>
+        <textarea id="sujet" name="sujet" rows="4" placeholder="Ex : tensions dans l’équipe, prise de poste, performance sportive instable…"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="type-besoin">Votre besoin principal</label>
+        <select id="type-besoin" name="type-besoin">
+          <option value="">Sélectionner…</option>
+          <option value="formations">Formations</option>
+          <option value="coaching">Coaching</option>
+          <option value="preparation-mentale">Préparation mentale</option>
+          <option value="je-ne-sais-pas">Je ne sais pas encore</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-primary">Demander le diagnostic</button>
+    </form>
+
+    <p class="small">
+      Vos données sont traitées uniquement pour répondre à votre demande.  
+      Voir <a href="confidentialite.html">Confidentialité (RGPD)</a>.
+    </p>
+  </section>
+
+  <!-- RASSURANCE -->
+  <section class="values">
+    <h2>Ce que vous pouvez attendre de cet échange</h2>
+
+    <ul class="method-list">
+      <li>Un regard extérieur, structuré et bienveillant.</li>
+      <li>Une clarification de vos enjeux réels.</li>
+      <li>Des pistes concrètes, même si nous ne travaillons pas ensemble ensuite.</li>
+      <li>Aucune pression commerciale.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      © <span id="year"></span> 3H Conseils ·
+      <a href="mentions-legales.html">Mentions légales</a> ·
+      <a href="confidentialite.html">Confidentialité (RGPD)</a> ·
+      <a href="cookies.html">Cookies</a> ·
+      <a href="accessibilite-handicap.html">Accessibilité &amp; handicap</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
+
+</body>
+</html>

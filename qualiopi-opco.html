@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Merci ! Votre guide est en route | 3H Conseils</title>
+  <meta name="description" content="Merci pour votre téléchargement. Votre guide PDF est en route. Découvrez la prochaine étape.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://www.3hconseils.com/page-merci.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .merci-page { background: var(--black-soft); min-height: 100vh; display: flex; flex-direction: column; }
+    .merci-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .merci-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 40px rgba(61,68,82,0.10);
+      padding: 48px 40px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    .merci-check {
+      width: 72px;
+      height: 72px;
+      background: #D1FAE5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 32px;
+    }
+    .merci-card h1 { font-size: clamp(24px, 3vw, 32px); margin-bottom: 12px; }
+    .merci-card .merci-sub { font-size: 16px; color: var(--muted); margin-bottom: 32px; }
+
+    .merci-steps {
+      background: var(--black-soft);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .merci-steps h3 { font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+    .merci-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .merci-step:last-child { margin-bottom: 0; }
+    .step-num {
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 13px;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 14px; color: var(--text); line-height: 1.5; }
+
+    .merci-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+    .merci-upsell h2 { font-size: 20px; margin-bottom: 10px; }
+    .merci-upsell p { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+
+    @media (max-width: 520px) {
+      .merci-card { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body class="merci-page">
+
+  <!-- Top bar logo -->
+  <div style="background:var(--gold); padding:12px 24px; text-align:center; border-bottom:2px solid var(--yellow-dark);">
+    <a href="index.html" aria-label="3H Conseils – retour à l'accueil">
+      <img src="assets/img/logo-3hconseils.png" alt="3H Conseils" style="height:60px; width:auto;" width="110" height="110">
+    </a>
+  </div>
+
+  <main class="merci-main" id="main-content">
+    <div class="merci-card" role="main" aria-labelledby="merci-title">
+
+      <div class="merci-check" aria-hidden="true">✓</div>
+
+      <h1 id="merci-title">Votre guide est en route !</h1>
+      <p class="merci-sub">
+        Merci pour votre confiance. Vérifiez votre boîte mail (et vos spams, par précaution).
+      </p>
+
+      <div class="merci-steps">
+        <h3>La suite en 3 étapes</h3>
+        <div class="merci-step">
+          <span class="step-num">1</span>
+          <span class="step-text"><strong>Ouvrez l'email de 3H Conseils</strong> — il contient le lien de téléchargement direct du guide PDF.</span>
+        </div>
+        <div class="merci-step">
+          <span class="step-num">2</span>
+          <span class="step-text"><strong>Lisez les 7 erreurs</strong> — identifiez celle(s) qui résonne(nt) le plus dans votre contexte.</span>
+        </div>
+        <div class="merci-step">
+          <span class="step-num">3</span>
+          <span class="step-text"><strong>Passez à l'action</strong> — chaque erreur est accompagnée de solutions concrètes, applicables dès demain.</span>
+        </div>
+      </div>
+
+      <hr class="merci-divider">
+
+      <div class="merci-upsell">
+        <h2>Envie d'aller plus loin ?</h2>
+        <p>
+          Un diagnostic gratuit de 20 minutes pour identifier les priorités dans votre équipe ou organisation — sans engagement.
+        </p>
+        <a href="https://cal.eu/3hconseils/diagnostic-gratuit-20-minutes" class="btn-primary" target="_blank" rel="noopener" style="display:inline-flex; margin-bottom:12px;">
+          Réserver mon diagnostic gratuit
+        </a>
+        <br>
+        <a href="index.html" class="small" style="margin-top:8px; display:inline-block;">← Retour à l'accueil</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer style="background:var(--black-card); padding:16px 24px; text-align:center; font-size:13px; color:rgba(255,255,255,0.4);" role="contentinfo">
+    © <span id="year"></span> 3H Conseils ·
+    <a href="mentions-legales.html" style="color:rgba(255,255,255,0.4);">Mentions légales</a> ·
+    <a href="confidentialite.html" style="color:rgba(255,255,255,0.4);">RGPD</a>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
