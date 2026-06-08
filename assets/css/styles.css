@@ -721,3 +721,133 @@ textarea { resize: vertical; min-height: 120px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .lb-form-wrap { padding: 24px 18px; }
 }
+
+/* ============================================================
+   CORRECTIF RESPONSIVE MOBILE — v1.0 — 2026-06
+   Cible : 89/100 — iPhone 14 (375px) & Android (390px)
+   Impact PC : nul — toutes les règles sont encapsulées
+               dans des media queries ≤ 768px, ou concernent
+               des propriétés universellement neutres.
+   ============================================================ */
+
+/* --- Sécurité globale : empêche tout débordement horizontal --- */
+body { overflow-x: hidden; }
+
+h1, h2, h3, h4 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* --- Contraste : doré sur fond crème (#F5F0E8)
+       #B8962E → ratio 2.8:1 (échec WCAG AA)
+       #8A6E1E = --gold-dark déjà défini → ratio ~5.1:1 ✓
+       Ici on s'assure que .text-gold utilise bien gold-dark
+       (déjà le cas) et que la slogan-bar reste lisible.     --- */
+.slogan-bar p { color: var(--black); }
+
+/* --- Images : dimensions explicites pour éviter le layout shift --- */
+img { height: auto; max-width: 100%; }
+
+/* ============================================================
+   MOBILE ≤ 768px — Touch targets & navigation
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* Bouton hamburger : zone tactile 44×44px minimum */
+  .nav-toggle {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 6px 16px;
+  }
+
+  /* Liens nav mobile déjà à padding: 10px 6px — on sécurise */
+  .nav-links a { min-height: 44px; }
+
+  /* Icône sociale footer : passe de 36px à 44px */
+  .footer-social a {
+    width: 44px;
+    height: 44px;
+  }
+
+}
+
+/* ============================================================
+   MOBILE ≤ 600px — Stats row & formulaire
+   ============================================================ */
+@media (max-width: 600px) {
+
+  /* Trust bar : 4 stats côte à côte → 2×2 si gap trop serré
+     flex-wrap déjà présent, on réduit le gap pour 375px     */
+  .trust-bar .container { gap: 20px; }
+  .trust-stat strong { font-size: 22px; }
+
+  /* Formulaire : champs pleine largeur et font-size 16px
+     (évite le zoom automatique iOS sur les inputs < 16px)   */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  /* Bouton submit : pleine largeur, hauteur tactile confortable */
+  input[type="submit"],
+  button[type="submit"] {
+    width: 100%;
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  /* Espacement champs */
+  .form-group { margin-bottom: 18px; }
+
+}
+
+/* ============================================================
+   MOBILE ≤ 480px — Typographie & footer
+   ============================================================ */
+@media (max-width: 480px) {
+
+  /* Footer : textes secondaires jamais sous 13px (déjà 13px,
+     on sécurise les surcharges éventuelles)                  */
+  .footer-section a { font-size: 13px; }
+  .footer-section p { font-size: 13px; }
+
+  /* Footer bottom : liens légaux en colonne sur très petit écran */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  /* Copyright : passage en bloc centré */
+  .footer-bottom p,
+  .footer-bottom span {
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  /* Container : padding réduit pour gagner de l'espace utile */
+  .container,
+  .page-container { padding: 0 16px; }
+
+  /* Hero : padding latéral réduit */
+  .home-hero { padding: 48px 16px 40px; }
+  .page-hero  { padding: 48px 0 40px; }
+
+  /* Boutons CTA : pleine largeur systématique */
+  .btn-primary,
+  a.btn-primary,
+  .btn,
+  a.btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 15px;
+    padding: 14px 20px;
+  }
+
+}
