@@ -97,6 +97,55 @@
     ]
   }
   </script>
+  <!-- JSON-LD FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Vos formations sont-elles finançables par un OPCO ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. 3H Conseils est certifié Qualiopi, ce qui rend toutes nos formations éligibles aux financements OPCO (ATLAS, AKTO, OPCO EP…). Nous accompagnons les entreprises dans les démarches de prise en charge."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Proposez-vous des formations en distanciel ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, tous nos programmes sont disponibles en présentiel et en distanciel. Nous intervenons auprès des entreprises de Loire, Saint-Étienne, Lyon et partout en France à distance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "À qui s'adressent vos formations et coachings ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nos programmes s'adressent aux dirigeants, managers et salariés souhaitant progresser en communication, gestion des conflits, prise de parole, organisation ou développement personnel. Chaque parcours est conçu sur mesure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Proposez-vous un premier entretien gratuit ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Un diagnostic de 20 minutes est offert pour identifier vos besoins et définir le programme adapté. Réservation directement en ligne sur www.3hconseils.com"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vos formations sont-elles vraiment personnalisées ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Aucun programme n'est standard chez 3H Conseils. Chaque formation est construite après une analyse des besoins spécifiques de l'entreprise et des participants. C'est notre engagement qualité, au coeur de notre certification Qualiopi."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main-content">Aller au contenu principal</a>
@@ -273,6 +322,52 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-title" style="background:var(--cream-dark);">
+    <div class="container" style="max-width:760px;">
+      <h2 id="faq-title" class="section-title">Questions fréquentes</h2>
+      <div class="gold-divider centered" style="margin-bottom:40px;"></div>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question">Vos formations sont-elles finançables par un OPCO ?</summary>
+          <div class="faq-answer">
+            <p>Oui. 3H Conseils est certifié Qualiopi, ce qui rend toutes nos formations éligibles aux financements OPCO (ATLAS, AKTO, OPCO EP…). Nous accompagnons les entreprises dans les démarches de prise en charge.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Proposez-vous des formations en distanciel ?</summary>
+          <div class="faq-answer">
+            <p>Oui, tous nos programmes sont disponibles en présentiel et en distanciel. Nous intervenons auprès des entreprises de Loire, Saint-Étienne, Lyon et partout en France à distance.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">À qui s'adressent vos formations et coachings ?</summary>
+          <div class="faq-answer">
+            <p>Nos programmes s'adressent aux dirigeants, managers et salariés souhaitant progresser en communication, gestion des conflits, prise de parole, organisation ou développement personnel. Chaque parcours est conçu sur mesure.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Proposez-vous un premier entretien gratuit ?</summary>
+          <div class="faq-answer">
+            <p>Oui. Un diagnostic de 20 minutes est offert pour identifier vos besoins et définir le programme adapté. <a href="https://cal.eu/3hconseils/diagnostic-gratuit-20-minutes" target="_blank" rel="noopener">Réservation directement en ligne →</a></p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Vos formations sont-elles vraiment personnalisées ?</summary>
+          <div class="faq-answer">
+            <p>Oui. Aucun programme n'est standard chez 3H Conseils. Chaque formation est construite après une analyse des besoins spécifiques de l'entreprise et des participants. C'est notre engagement qualité, au cœur de notre certification Qualiopi.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA FINAL -->
   <section class="section" aria-labelledby="cta-final-title">
     <div class="container" style="text-align:center;">
@@ -349,6 +444,17 @@
 </footer>
 
 <script src="assets/js/quiz.js"></script>
+<style>
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid var(--border); border-radius: var(--radius); background: var(--cream); overflow: hidden; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; cursor: pointer; font-family: var(--font-head); font-weight: 600; font-size: 16px; color: var(--black); list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 22px; color: var(--gold-dark); flex-shrink: 0; margin-left: 16px; transition: transform 0.2s; }
+  .faq-item[open] .faq-question::after { transform: rotate(45deg); }
+  .faq-answer { padding: 0 24px 18px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+  .faq-answer a { color: var(--gold-dark); text-decoration: none; }
+  .faq-answer a:hover { text-decoration: underline; }
+</style>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   function toggleMenu(btn){
