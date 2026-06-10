@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-diagnostic des positions de vie — 3H Conseils</title>
+<meta name="description" content="Découvrez votre position de vie dominante : assertivité, agressivité, fuite ou abandon. Outil pédagogique 3H Conseils.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --creme: #F5F0E8;
+    --noir: #111111;
+    --dore: #B8962E;
+    --dore-light: #D4AE5A;
+    --blanc: #FFFFFF;
+    --gris-clair: #E8E3DB;
+    --gris-texte: #555555;
+    --assertif: #1D9E75;
+    --agressif: #C0392B;
+    --fuite: #B8962E;
+    --abandon: #534AB7;
+    --font-titre: Georgia, 'Times New Roman', serif;
+    --font-corps: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--creme);
+    color: var(--noir);
+    font-family: var(--font-corps);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--noir);
+    padding: 0 2rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--dore);
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .logo-initiales {
+    width: 40px;
+    height: 40px;
+    background: var(--dore);
+    color: var(--noir);
+    font-family: var(--font-titre);
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .logo-texte {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-nom {
+    color: var(--blanc);
+    font-family: var(--font-titre);
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+
+  .logo-tagline {
+    color: var(--dore);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .retour-lien {
+    color: var(--dore);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+    transition: opacity .2s;
+  }
+  .retour-lien:hover { opacity: 1; }
+  .retour-lien::before { content: "←"; font-size: 14px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--noir);
+    color: var(--blanc);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--dore);
+  }
+
+  .hero-eyebrow {
+    color: var(--dore);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-family: var(--font-titre);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: normal;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    color: var(--blanc);
+  }
+
+  .hero h1 span {
+    color: var(--dore);
+  }
+
+  .hero-desc {
+    max-width: 620px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── LAYOUT PRINCIPAL ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── CONSIGNE ── */
+  .consigne {
+    background: var(--blanc);
+    border-left: 3px solid var(--dore);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 14px;
+    color: var(--gris-texte);
+    line-height: 1.65;
+  }
+  .consigne strong { color: var(--noir); }
+
+  /* ── CARTE THÈME ── */
+  .theme-card {
+    background: var(--blanc);
+    border: 1px solid var(--gris-clair);
+    border-top: 3px solid var(--dore);
+    margin-bottom: 1.25rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .theme-titre {
+    font-family: var(--font-titre);
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--noir);
+    margin-bottom: .25rem;
+  }
+
+  .theme-sous {
+    font-size: 12px;
+    color: var(--gris-texte);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .item-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gris-clair);
+  }
+  .item-row:last-of-type { border-bottom: none; }
+
+  .item-label {
+    flex: 1;
+    font-size: 13.5px;
+    color: var(--noir);
+    line-height: 1.4;
+  }
+
+  .score-input {
+    width: 56px;
+    height: 36px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1.5px solid var(--gris-clair);
+    background: var(--creme);
+    color: var(--noir);
+    outline: none;
+    transition: border-color .15s;
+    -moz-appearance: textfield;
+  }
+  .score-input::-webkit-inner-spin-button,
+  .score-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+  .score-input:focus { border-color: var(--dore); background: var(--blanc); }
+  .score-input.erreur { border-color: var(--agressif); background: #FFF5F5; }
+
+  .total-ligne {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: .75rem;
+    padding-top: .75rem;
+    border-top: 1px dashed var(--gris-clair);
+  }
+  .total-label { font-size: 12px; color: var(--gris-texte); }
+  .total-val { font-size: 13px; font-weight: 600; }
+  .total-ok { color: var(--assertif); }
+  .total-err { color: var(--agressif); }
+
+  /* ── BOUTON CALCULER ── */
+  .btn-calculer {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--dore);
+    color: var(--noir);
+    border: none;
+    font-family: var(--font-corps);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background .15s, transform .1s;
+  }
+  .btn-calculer:hover { background: var(--dore-light); }
+  .btn-calculer:active { transform: scale(0.99); }
+
+  .msg-erreur {
+    display: none;
+    background: #FFF0F0;
+    border-left: 3px solid var(--agressif);
+    padding: .75rem 1rem;
+    font-size: 13px;
+    color: var(--agressif);
+    margin-top: .75rem;
+  }
+
+  /* ── RÉSULTATS ── */
+  .resultats {
+    display: none;
+    margin-top: 2.5rem;
+    border-top: 2px solid var(--dore);
+    padding-top: 2rem;
+  }
+
+  .section-titre {
+    font-family: var(--font-titre);
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: var(--noir);
+    margin-bottom: 1.25rem;
+    letter-spacing: .01em;
+  }
+
+  /* bannière dominante */
+  .banniere-dom {
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid;
+  }
+  .b-assertif { background: #F0FAF6; border-color: var(--assertif); }
+  .b-agressif { background: #FDF0EF; border-color: var(--agressif); }
+  .b-fuite    { background: #FDF8EE; border-color: var(--fuite); }
+  .b-abandon  { background: #F0EFFC; border-color: var(--abandon); }
+
+  .banniere-dom .dom-titre {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: .4rem;
+  }
+  .b-assertif .dom-titre { color: var(--assertif); }
+  .b-agressif .dom-titre { color: var(--agressif); }
+  .b-fuite    .dom-titre { color: var(--fuite); }
+  .b-abandon  .dom-titre { color: var(--abandon); }
+
+  .banniere-dom .dom-texte { font-size: 13.5px; color: var(--gris-texte); line-height: 1.6; }
+
+  /* scores */
+  .scores-grille {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .score-carte {
+    background: var(--blanc);
+    border: 1px solid var(--gris-clair);
+    padding: .875rem .75rem;
+    text-align: center;
+  }
+  .score-carte .sc-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--gris-texte); margin-bottom: 6px; }
+  .score-carte .sc-val { font-size: 2rem; font-weight: 700; font-family: var(--font-titre); }
+  .sc-assertif { color: var(--assertif); }
+  .sc-agressif { color: var(--agressif); }
+  .sc-fuite    { color: var(--fuite); }
+  .sc-abandon  { color: var(--abandon); }
+
+  /* graphique */
+  .graphique-wrap {
+    background: var(--blanc);
+    border: 1px solid var(--gris-clair);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .graphique-titre {
+    font-size: 12px;
+    color: var(--gris-texte);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 1rem;
+  }
+
+  canvas#losange {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* fiches explicatives */
+  .fiches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .fiche {
+    background: var(--blanc);
+    border: 1px solid var(--gris-clair);
+    border-top: 3px solid;
+    padding: 1rem;
+  }
+  .fiche-assertif { border-top-color: var(--assertif); }
+  .fiche-agressif { border-top-color: var(--agressif); }
+  .fiche-fuite    { border-top-color: var(--fuite); }
+  .fiche-abandon  { border-top-color: var(--abandon); }
+
+  .fiche h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+  .fiche-assertif h3 { color: var(--assertif); }
+  .fiche-agressif h3 { color: var(--agressif); }
+  .fiche-fuite    h3 { color: var(--fuite); }
+  .fiche-abandon  h3 { color: var(--abandon); }
+
+  .fiche p { font-size: 12.5px; color: var(--gris-texte); line-height: 1.6; }
+
+  .fiche .position-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+    color: var(--blanc);
+  }
+  .fiche-assertif .position-tag { background: var(--assertif); }
+  .fiche-agressif .position-tag { background: var(--agressif); }
+  .fiche-fuite    .position-tag { background: var(--fuite); }
+  .fiche-abandon  .position-tag { background: var(--abandon); }
+
+  /* bouton reset */
+  .btn-reset {
+    display: block;
+    width: 100%;
+    padding: .75rem;
+    background: transparent;
+    border: 1.5px solid var(--gris-clair);
+    color: var(--gris-texte);
+    font-family: var(--font-corps);
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: border-color .15s, color .15s;
+  }
+  .btn-reset:hover { border-color: var(--dore); color: var(--noir); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--noir);
+    border-top: 2px solid var(--dore);
+    padding: 2rem;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  footer a { color: var(--dore); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-logo {
+    font-family: var(--font-titre);
+    color: var(--blanc);
+    font-size: 15px;
+    margin-bottom: .5rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .scores-grille { grid-template-columns: 1fr 1fr; }
+    .fiches { grid-template-columns: 1fr; }
+    .retour-lien span { display: none; }
+    header { padding: 0 1rem; }
+    main { padding: 1.5rem 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="https://www.3hconseils.com" class="logo-wrap">
+    <div class="logo-initiales">3H</div>
+    <div class="logo-texte">
+      <span class="logo-nom">3H Conseils</span>
+      <span class="logo-tagline">Formation &amp; Coaching professionnel</span>
+    </div>
+  </a>
+  <a href="https://www.3hconseils.com" class="retour-lien">
+    <span>Retour au site</span>
+  </a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Outil pédagogique — Analyse transactionnelle</p>
+  <h1>Auto-diagnostic des <span>positions de vie</span></h1>
+  <p class="hero-desc">
+    Identifiez votre style comportemental dominant à travers 8 situations du quotidien professionnel.
+    Résultat immédiat et confidentiel.
+  </p>
+</div>
+
+<!-- CONTENU PRINCIPAL -->
+<main>
+
+  <div class="consigne">
+    <strong>Mode d'emploi :</strong> Pour chacun des 8 thèmes, répartissez <strong>exactement 10 points</strong> entre les 4 comportements proposés, selon la fréquence à laquelle vous adoptez chacun. Vous pouvez attribuer 0 à un comportement si vous ne l'adoptez jamais.
+  </div>
+
+  <div id="themes-container"></div>
+
+  <div class="msg-erreur" id="msg-erreur">
+    Certains thèmes ne totalisent pas 10 points. Corrigez les cases en rouge avant de continuer.
+  </div>
+  <button class="btn-calculer" id="btn-calculer" onclick="calculer()">Voir mes résultats →</button>
+
+  <!-- RÉSULTATS -->
+  <div class="resultats" id="resultats">
+    <h2 class="section-titre">Vos résultats</h2>
+
+    <div class="banniere-dom" id="banniere-dom">
+      <div class="dom-titre" id="dom-titre"></div>
+      <div class="dom-texte" id="dom-texte"></div>
+    </div>
+
+    <div class="scores-grille">
+      <div class="score-carte">
+        <div class="sc-label">Assertivité</div>
+        <div class="sc-val sc-assertif" id="s-assertif">0</div>
+      </div>
+      <div class="score-carte">
+        <div class="sc-label">Agressivité</div>
+        <div class="sc-val sc-agressif" id="s-agressif">0</div>
+      </div>
+      <div class="score-carte">
+        <div class="sc-label">Fuite</div>
+        <div class="sc-val sc-fuite" id="s-fuite">0</div>
+      </div>
+      <div class="score-carte">
+        <div class="sc-label">Abandon</div>
+        <div class="sc-val sc-abandon" id="s-abandon">0</div>
+      </div>
+    </div>
+
+    <div class="graphique-wrap">
+      <div class="graphique-titre">Votre profil — graphique losange</div>
+      <canvas id="losange" width="400" height="400"></canvas>
+    </div>
+
+    <h2 class="section-titre">Les 4 positions de vie</h2>
+
+    <div class="fiches">
+      <div class="fiche fiche-assertif">
+        <span class="position-tag">OK+ / OK+</span>
+        <h3>Assertivité</h3>
+        <p>Position idéale : vous vous respectez et respectez autrui. Communication directe, ouverte, orientée solutions. Vous exprimez vos besoins sans agresser ni vous soumettre. La relation est un espace de coopération.</p>
+      </div>
+      <div class="fiche fiche-agressif">
+        <span class="position-tag">OK+ / OK−</span>
+        <h3>Agressivité</h3>
+        <p>Posture dominante : vous vous valorisez en dévalorisant l'autre. Tendance à critiquer, contrôler, imposer. L'énergie est orientée vers la victoire au détriment de la relation et du collectif.</p>
+      </div>
+      <div class="fiche fiche-fuite">
+        <span class="position-tag">OK− / OK+</span>
+        <h3>Fuite / Soumission</h3>
+        <p>Posture d'effacement : vous minimisez votre valeur face à l'autre. Évitement des conflits, difficulté à affirmer vos besoins, tendance à vous justifier ou à disparaître dans les situations difficiles.</p>
+      </div>
+      <div class="fiche fiche-abandon">
+        <span class="position-tag">OK− / OK−</span>
+        <h3>Abandon / Retrait</h3>
+        <p>Position de résignation : ni vous ni l'autre n'êtes valorisés. Sentiment d'impuissance, découragement, repli sur soi. Difficulté à s'engager dans la relation ou à croire en l'issue positive d'une situation.</p>
+      </div>
+    </div>
+
+    <button class="btn-reset" onclick="reinit()">↺ Recommencer le questionnaire</button>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">3H Conseils</div>
+  <p>Organisme de formation certifié <strong style="color:rgba(255,255,255,.7)">Qualiopi</strong> — Loire · Saint-Étienne · Lyon · Auvergne-Rhône-Alpes</p>
+  <p style="margin-top:.5rem">
+    <a href="https://www.3hconseils.com">www.3hconseils.com</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:hugues.hippler@3hconseils.com">hugues.hippler@3hconseils.com</a>
+  </p>
+  <p style="margin-top:.75rem;font-size:11px;opacity:.5">Outil à usage pédagogique — document confidentiel</p>
+</footer>
+
+<script>
+const THEMES = [
+  {
+    titre: "Thème 1 — Face aux erreurs",
+    items: [
+      { lbl: "a) Je fais le dos rond, je n'agis pas ou critique", type: "abandon" },
+      { lbl: "b) J'utilise le contrôle et la persuasion, je n'hésite pas à faire pression", type: "agressif" },
+      { lbl: "c) Je suis défait, je veux tout faire pour régler le problème même s'il faut travailler pour 10", type: "fuite" },
+      { lbl: "d) J'informe, j'analyse, je propose des occasions de développement et d'amélioration", type: "assertif" }
+    ]
+  },
+  {
+    titre: "Thème 2 — Face aux problèmes",
+    items: [
+      { lbl: "a) J'essaye d'éluder, je m'arrange", type: "abandon" },
+      { lbl: "b) Je tiens aux objectifs et aussi à la qualité de la vie de chacun", type: "assertif" },
+      { lbl: "c) Je me soucie surtout de tenir les objectifs", type: "agressif" },
+      { lbl: "d) Je fais en sorte que l'on soit satisfait de moi", type: "fuite" }
+    ]
+  },
+  {
+    titre: "Thème 3 — Face aux règles",
+    items: [
+      { lbl: "a) Les règles, c'est bien. Pour les autres !", type: "agressif" },
+      { lbl: "b) S'il est possible de passer outre, c'est mieux", type: "abandon" },
+      { lbl: "c) Les règles sont les règles, il faut absolument s'y coller", type: "fuite" },
+      { lbl: "d) Je pense qu'on doit s'efforcer de les suivre sans en être prisonnier", type: "assertif" }
+    ]
+  },
+  {
+    titre: "Thème 4 — Face aux conflits",
+    items: [
+      { lbl: "a) Les conflits peuvent être utiles, nous en tirons souvent des occasions de progresser", type: "assertif" },
+      { lbl: "b) Je n'aime guère les conflits, ça nuit aux relations", type: "fuite" },
+      { lbl: "c) Je pense qu'il faut d'abord penser au travail et ne pas refaire le monde", type: "agressif" },
+      { lbl: "d) Ce n'est pas mon affaire", type: "abandon" }
+    ]
+  },
+  {
+    titre: "Thème 5 — Face à la colère",
+    items: [
+      { lbl: "a) Je n'aime pas m'affronter à la colère, ça m'est pénible", type: "fuite" },
+      { lbl: "b) Ça me rend très désagréable et méfiant", type: "abandon" },
+      { lbl: "c) Dans ce cas, je provoque une bonne confrontation", type: "assertif" },
+      { lbl: "d) J'en veux à ceux qui se permettent ça, je rumine ma rancœur", type: "agressif" }
+    ]
+  },
+  {
+    titre: "Thème 6 — Face à la hiérarchie",
+    items: [
+      { lbl: "a) Je vois bien les points faibles, je critique, je manipule", type: "agressif" },
+      { lbl: "b) Je fais de mon mieux, j'espère être apprécié", type: "fuite" },
+      { lbl: "c) Chacun son travail", type: "abandon" },
+      { lbl: "d) On discute, on échange, on négocie", type: "assertif" }
+    ]
+  },
+  {
+    titre: "Thème 7 — Face à l'humour",
+    items: [
+      { lbl: "a) Je fais rire à mes dépens", type: "fuite" },
+      { lbl: "b) Je pratique l'ironie désabusée", type: "abandon" },
+      { lbl: "c) Je sais trouver les mots qui libèrent et détendent", type: "assertif" },
+      { lbl: "d) Mon humour est caustique et mordant", type: "agressif" }
+    ]
+  },
+  {
+    titre: "Thème 8 — Face à l'autre",
+    items: [
+      { lbl: "a) J'y vais sans souci", type: "assertif" },
+      { lbl: "b) Viens toi, plutôt", type: "agressif" },
+      { lbl: "c) Puisqu'il faut y aller…", type: "fuite" },
+      { lbl: "d) Aller là ou ailleurs…", type: "abandon" }
+    ]
+  }
+];
+
+const COULEURS = {
+  assertif: '#1D9E75',
+  agressif: '#C0392B',
+  fuite:    '#B8962E',
+  abandon:  '#534AB7'
+};
+
+const DOM_INFO = {
+  assertif: {
+    titre: "Position dominante : Assertivité (OK+ / OK+)",
+    classe: "b-assertif",
+    texte: "Votre style principal est l'assertivité. Vous construisez des relations fondées sur le respect mutuel et la coopération. Vous savez affirmer vos positions sans écraser ni vous effacer. Piste de développement : maintenez cette posture sous pression et accompagnez votre entourage vers cette même position."
+  },
+  agressif: {
+    titre: "Position dominante : Agressivité (OK+ / OK−)",
+    classe: "b-agressif",
+    texte: "Votre style principal est l'agressivité. Vous avez tendance à vous imposer au détriment des besoins d'autrui. Votre force de conviction peut être un atout, mais elle fragilise les relations sur la durée. Piste de développement : intégrer davantage les besoins de l'autre pour rééquilibrer vers l'assertivité."
+  },
+  fuite: {
+    titre: "Position dominante : Fuite / Soumission (OK− / OK+)",
+    classe: "b-fuite",
+    texte: "Votre style principal est la fuite. Vous avez tendance à minimiser vos propres besoins et à vous effacer dans les situations difficiles. Votre sens de la relation est réel, mais il se fait au prix de votre affirmation. Piste de développement : renforcer l'estime de soi et apprendre à poser vos limites."
+  },
+  abandon: {
+    titre: "Position dominante : Abandon / Retrait (OK− / OK−)",
+    classe: "b-abandon",
+    texte: "Votre style principal est le retrait. Vous avez tendance à la résignation et au repli, aussi bien sur vous-même que vis-à-vis des autres. Piste de développement : travailler la confiance en soi et en l'autre pour réorienter progressivement vers l'assertivité."
+  }
+};
+
+function buildUI() {
+  const container = document.getElementById('themes-container');
+  THEMES.forEach((theme, ti) => {
+    const card = document.createElement('div');
+    card.className = 'theme-card';
+    card.innerHTML = `<div class="theme-titre">${theme.titre}</div><div class="theme-sous">Répartissez 10 points entre ces 4 comportements</div>`;
+
+    theme.items.forEach((item, ii) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <span class="item-label">${item.lbl}</span>
+        <input type="number" min="0" max="10" step="1" placeholder="0"
+               class="score-input" id="t${ti}i${ii}"
+               oninput="majTotal(${ti})">
+      `;
+      card.appendChild(row);
+    });
+
+    const tl = document.createElement('div');
+    tl.className = 'total-ligne';
+    tl.innerHTML = `<span class="total-label">Total :</span><span class="total-val total-err" id="tot${ti}">0 / 10</span>`;
+    card.appendChild(tl);
+    container.appendChild(card);
+  });
+}
+
+function getVal(ti, ii) {
+  const v = parseFloat(document.getElementById(`t${ti}i${ii}`).value);
+  return isNaN(v) ? 0 : v;
+}
+
+function majTotal(ti) {
+  let sum = 0;
+  for (let ii = 0; ii < 4; ii++) sum += getVal(ti, ii);
+  const el = document.getElementById(`tot${ti}`);
+  el.textContent = `${sum} / 10`;
+  el.className = 'total-val ' + (Math.round(sum * 10) === 100 ? 'total-ok' : 'total-err');
+
+  // coloration des inputs
+  for (let ii = 0; ii < 4; ii++) {
+    const inp = document.getElementById(`t${ti}i${ii}`);
+    inp.classList.toggle('erreur', Math.round(sum * 10) !== 100 && getVal(ti, ii) > 0);
+  }
+}
+
+function calculer() {
+  let valide = true;
+  for (let ti = 0; ti < 8; ti++) {
+    let sum = 0;
+    for (let ii = 0; ii < 4; ii++) sum += getVal(ti, ii);
+    if (Math.round(sum * 10) !== 100) { valide = false; break; }
+  }
+
+  document.getElementById('msg-erreur').style.display = valide ? 'none' : 'block';
+  if (!valide) return;
+
+  const scores = { assertif: 0, agressif: 0, fuite: 0, abandon: 0 };
+  THEMES.forEach((theme, ti) => {
+    theme.items.forEach((item, ii) => {
+      scores[item.type] += getVal(ti, ii);
+    });
+  });
+
+  document.getElementById('s-assertif').textContent = scores.assertif;
+  document.getElementById('s-agressif').textContent = scores.agressif;
+  document.getElementById('s-fuite').textContent    = scores.fuite;
+  document.getElementById('s-abandon').textContent  = scores.abandon;
+
+  const dominant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
+  const info = DOM_INFO[dominant];
+  const banniere = document.getElementById('banniere-dom');
+  banniere.className = 'banniere-dom ' + info.classe;
+  document.getElementById('dom-titre').textContent = info.titre;
+  document.getElementById('dom-texte').textContent = info.texte;
+
+  dessinerLosange(scores);
+
+  const section = document.getElementById('resultats');
+  section.style.display = 'block';
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function dessinerLosange(scores) {
+  const canvas = document.getElementById('losange');
+  const ctx = canvas.getContext('2d');
+  const W = 400, H = 400;
+  ctx.clearRect(0, 0, W, H);
+
+  const cx = W / 2, cy = H / 2;
+  const maxR = 150;
+  const MAX = 80; // score max théorique
+
+  const axes = [
+    { key: 'assertif', angle: -Math.PI / 2, label: 'Assertivité' },
+    { key: 'agressif', angle:  Math.PI / 2, label: 'Agressivité' },
+    { key: 'fuite',    angle:  Math.PI,      label: 'Fuite' },
+    { key: 'abandon',  angle:  0,            label: 'Abandon' }
+  ];
+
+  // grille
+  [0.25, 0.5, 0.75, 1].forEach(f => {
+    ctx.beginPath();
+    ctx.arc(cx, cy, maxR * f, 0, 2 * Math.PI);
+    ctx.strokeStyle = 'rgba(0,0,0,0.09)';
+    ctx.lineWidth = 0.75;
+    ctx.setLineDash([3, 3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    if (f < 1) {
+      ctx.font = '10px Georgia, serif';
+      ctx.fillStyle = '#999';
+      ctx.textAlign = 'left';
+      ctx.fillText(Math.round(MAX * f), cx + 4, cy - maxR * f + 4);
+    }
+  });
+
+  // axes
+  axes.forEach(a => {
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(a.angle) * maxR, cy + Math.sin(a.angle) * maxR);
+    ctx.strokeStyle = 'rgba(0,0,0,0.18)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+
+  // polygone
+  ctx.beginPath();
+  axes.forEach((a, i) => {
+    const r = Math.min(scores[a.key] / MAX, 1) * maxR;
+    const x = cx + Math.cos(a.angle) * r;
+    const y = cy + Math.sin(a.angle) * r;
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  });
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(184,150,46,0.15)';
+  ctx.fill();
+  ctx.strokeStyle = '#B8962E';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // points colorés
+  axes.forEach(a => {
+    const r = Math.min(scores[a.key] / MAX, 1) * maxR;
+    const x = cx + Math.cos(a.angle) * r;
+    const y = cy + Math.sin(a.angle) * r;
+    ctx.beginPath();
+    ctx.arc(x, y, 6, 0, 2 * Math.PI);
+    ctx.fillStyle = COULEURS[a.key];
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  });
+
+  // étiquettes
+  axes.forEach(a => {
+    const lx = cx + Math.cos(a.angle) * (maxR + 28);
+    const ly = cy + Math.sin(a.angle) * (maxR + 28);
+    ctx.font = 'bold 12px Georgia, serif';
+    ctx.fillStyle = COULEURS[a.key];
+    if (a.angle === 0) ctx.textAlign = 'left';
+    else if (Math.abs(a.angle) === Math.PI) ctx.textAlign = 'right';
+    else ctx.textAlign = 'center';
+    ctx.fillText(a.label, lx, ly);
+    ctx.font = '11px Georgia, serif';
+    ctx.fillStyle = '#555';
+    ctx.fillText('(' + scores[a.key] + ' pts)', lx, ly + 15);
+  });
+}
+
+function reinit() {
+  THEMES.forEach((_, ti) => {
+    for (let ii = 0; ii < 4; ii++) {
+      const inp = document.getElementById(`t${ti}i${ii}`);
+      inp.value = '';
+      inp.classList.remove('erreur');
+    }
+    const el = document.getElementById(`tot${ti}`);
+    el.textContent = '0 / 10';
+    el.className = 'total-val total-err';
+  });
+  document.getElementById('resultats').style.display = 'none';
+  document.getElementById('msg-erreur').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+buildUI();
+</script>
+</body>
+</html>
