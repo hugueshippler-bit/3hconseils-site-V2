@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic gratuit — Positions de vie | 3H Conseils</title>
+<meta name="description" content="Découvrez votre position de vie dominante en analyse transactionnelle : assertivité, agressivité, fuite ou abandon. Diagnostic gratuit proposé par 3H Conseils.">
+<meta property="og:title" content="Quel est votre style relationnel dominant ? — Diagnostic gratuit 3H Conseils">
+<meta property="og:description" content="8 questions, résultats immédiats, analyse PDF offerte. Découvrez votre position de vie en analyse transactionnelle.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.3hconseils.com/diagnostic-positions-vie">
+<style>
+  :root {
+    --creme:#F5F0E8; --noir:#111111; --dore:#B8962E; --dore-l:#D4AE5A;
+    --blanc:#FFFFFF; --gris-cl:#E8E3DB; --gris:#555555;
+    --assertif:#1D9E75; --agressif:#C0392B; --fuite:#B8962E; --abandon:#534AB7;
+    --f-titre: Georgia,'Times New Roman',serif;
+    --f-corps:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--creme);color:var(--noir);font-family:var(--f-corps);font-size:15px;line-height:1.6}
+
+  /* HEADER */
+  header{background:var(--noir);padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--dore)}
+  .logo-wrap{display:flex;align-items:center;gap:14px;text-decoration:none}
+  .logo-init{width:40px;height:40px;background:var(--dore);color:var(--noir);font-family:var(--f-titre);font-size:16px;font-weight:bold;display:flex;align-items:center;justify-content:center;letter-spacing:1px;flex-shrink:0}
+  .logo-nom{color:var(--blanc);font-family:var(--f-titre);font-size:17px;letter-spacing:.04em;line-height:1.2;display:block}
+  .logo-tag{color:var(--dore);font-size:10px;letter-spacing:.1em;text-transform:uppercase;display:block}
+  .retour{color:var(--dore);text-decoration:none;font-size:13px;letter-spacing:.05em;opacity:.85;transition:opacity .2s}
+  .retour:hover{opacity:1}
+  .retour::before{content:"← ";font-size:14px}
+
+  /* HERO */
+  .hero{background:var(--noir);color:var(--blanc);padding:3rem 2rem 2.5rem;text-align:center;border-bottom:1px solid var(--dore)}
+  .eyebrow{color:var(--dore);font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+  .hero h1{font-family:var(--f-titre);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:normal;line-height:1.25;margin-bottom:.75rem}
+  .hero h1 span{color:var(--dore)}
+  .hero-desc{max-width:600px;margin:.75rem auto 0;color:rgba(255,255,255,.7);font-size:14px;line-height:1.7}
+  .hero-badges{display:flex;justify-content:center;gap:1rem;margin-top:1.25rem;flex-wrap:wrap}
+  .badge{background:rgba(184,150,46,.18);border:1px solid rgba(184,150,46,.4);color:var(--dore);font-size:12px;padding:4px 14px;letter-spacing:.04em}
+
+  /* MAIN */
+  main{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+  /* CONSIGNE */
+  .consigne{background:var(--blanc);border-left:3px solid var(--dore);padding:1rem 1.25rem;margin-bottom:2rem;font-size:14px;color:var(--gris);line-height:1.65}
+  .consigne strong{color:var(--noir)}
+
+  /* THEMES */
+  .theme-card{background:var(--blanc);border:1px solid var(--gris-cl);border-top:3px solid var(--dore);margin-bottom:1.25rem;padding:1.25rem 1.5rem}
+  .theme-titre{font-family:var(--f-titre);font-size:15px;font-weight:bold;color:var(--noir);margin-bottom:.2rem}
+  .theme-sous{font-size:12px;color:var(--gris);margin-bottom:1rem;letter-spacing:.02em}
+  .item-row{display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--gris-cl)}
+  .item-row:last-of-type{border-bottom:none}
+  .item-label{flex:1;font-size:13.5px;color:var(--noir);line-height:1.4}
+  .score-input{width:56px;height:36px;text-align:center;font-size:15px;font-weight:500;border:1.5px solid var(--gris-cl);background:var(--creme);color:var(--noir);outline:none;transition:border-color .15s;-moz-appearance:textfield}
+  .score-input::-webkit-inner-spin-button,.score-input::-webkit-outer-spin-button{-webkit-appearance:none}
+  .score-input:focus{border-color:var(--dore);background:var(--blanc)}
+  .score-input.err{border-color:var(--agressif);background:#FFF5F5}
+  .total-ligne{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:.75rem;padding-top:.75rem;border-top:1px dashed var(--gris-cl)}
+  .total-label{font-size:12px;color:var(--gris)}
+  .total-val{font-size:13px;font-weight:600}
+  .tok{color:var(--assertif)} .terr{color:var(--agressif)}
+
+  /* BOUTON CALCULER */
+  .btn-calc{display:block;width:100%;padding:1rem;background:var(--dore);color:var(--noir);border:none;font-family:var(--f-corps);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-top:1.5rem;transition:background .15s,transform .1s}
+  .btn-calc:hover{background:var(--dore-l)}
+  .btn-calc:active{transform:scale(.99)}
+  .msg-err{display:none;background:#FFF0F0;border-left:3px solid var(--agressif);padding:.75rem 1rem;font-size:13px;color:var(--agressif);margin-top:.75rem}
+
+  /* MODAL CAPTURE */
+  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;align-items:center;justify-content:center;padding:1rem}
+  .overlay.actif{display:flex}
+  .modal{background:var(--blanc);max-width:480px;width:100%;padding:2rem;position:relative;border-top:4px solid var(--dore)}
+  .modal-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--gris);line-height:1}
+  .modal-close:hover{color:var(--noir)}
+  .modal h2{font-family:var(--f-titre);font-size:1.3rem;font-weight:normal;margin-bottom:.5rem;color:var(--noir)}
+  .modal-sub{font-size:13px;color:var(--gris);margin-bottom:1.5rem;line-height:1.6}
+  .modal-sub strong{color:var(--noir)}
+  .form-group{margin-bottom:1rem}
+  .form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:5px;color:var(--noir)}
+  .form-group input{width:100%;height:40px;padding:0 12px;border:1.5px solid var(--gris-cl);background:var(--creme);font-size:14px;color:var(--noir);outline:none;font-family:var(--f-corps)}
+  .form-group input:focus{border-color:var(--dore);background:var(--blanc)}
+  .modal-legal{font-size:11px;color:var(--gris);margin-top:.75rem;line-height:1.5}
+  .btn-submit{display:block;width:100%;padding:.875rem;background:var(--dore);color:var(--noir);border:none;font-family:var(--f-corps);font-size:15px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;margin-top:1rem;transition:background .15s}
+  .btn-submit:hover{background:var(--dore-l)}
+  .btn-submit:disabled{opacity:.5;cursor:not-allowed}
+  .btn-skip{display:block;width:100%;margin-top:.75rem;padding:.5rem;background:none;border:1px solid var(--gris-cl);font-size:13px;color:var(--gris);cursor:pointer;font-family:var(--f-corps)}
+  .btn-skip:hover{border-color:var(--dore);color:var(--noir)}
+  .modal-msg{font-size:13px;margin-top:.5rem;display:none}
+  .modal-msg.ok{color:var(--assertif)} .modal-msg.ko{color:var(--agressif)}
+
+  /* RÉSULTATS */
+  .resultats{display:none;margin-top:2.5rem;border-top:2px solid var(--dore);padding-top:2rem}
+  .section-titre{font-family:var(--f-titre);font-size:1.3rem;font-weight:normal;color:var(--noir);margin-bottom:1.25rem}
+  .banniere{padding:1.25rem 1.5rem;margin-bottom:1.5rem;border-left:4px solid}
+  .b-assertif{background:#F0FAF6;border-color:var(--assertif)}
+  .b-agressif{background:#FDF0EF;border-color:var(--agressif)}
+  .b-fuite{background:#FDF8EE;border-color:var(--fuite)}
+  .b-abandon{background:#F0EFFC;border-color:var(--abandon)}
+  .dom-titre{font-size:15px;font-weight:600;margin-bottom:.4rem}
+  .b-assertif .dom-titre{color:var(--assertif)} .b-agressif .dom-titre{color:var(--agressif)}
+  .b-fuite .dom-titre{color:var(--fuite)} .b-abandon .dom-titre{color:var(--abandon)}
+  .dom-texte{font-size:13.5px;color:var(--gris);line-height:1.6}
+  .scores-grille{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem}
+  .score-carte{background:var(--blanc);border:1px solid var(--gris-cl);padding:.875rem .75rem;text-align:center}
+  .sc-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--gris);margin-bottom:6px}
+  .sc-val{font-size:2rem;font-weight:700;font-family:var(--f-titre)}
+  .sc-assertif{color:var(--assertif)} .sc-agressif{color:var(--agressif)}
+  .sc-fuite{color:var(--fuite)} .sc-abandon{color:var(--abandon)}
+  .graphique-wrap{background:var(--blanc);border:1px solid var(--gris-cl);padding:1.5rem;margin-bottom:1.5rem;display:flex;flex-direction:column;align-items:center}
+  .graphique-titre{font-size:12px;color:var(--gris);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+  .fiches{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
+  .fiche{background:var(--blanc);border:1px solid var(--gris-cl);border-top:3px solid;padding:1rem}
+  .fiche-assertif{border-top-color:var(--assertif)} .fiche-agressif{border-top-color:var(--agressif)}
+  .fiche-fuite{border-top-color:var(--fuite)} .fiche-abandon{border-top-color:var(--abandon)}
+  .fiche .pos-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;margin-bottom:6px;color:var(--blanc)}
+  .fiche-assertif .pos-tag{background:var(--assertif)} .fiche-agressif .pos-tag{background:var(--agressif)}
+  .fiche-fuite .pos-tag{background:var(--fuite)} .fiche-abandon .pos-tag{background:var(--abandon)}
+  .fiche h3{font-size:13px;font-weight:600;margin-bottom:.5rem}
+  .fiche-assertif h3{color:var(--assertif)} .fiche-agressif h3{color:var(--agressif)}
+  .fiche-fuite h3{color:var(--fuite)} .fiche-abandon h3{color:var(--abandon)}
+  .fiche p{font-size:12.5px;color:var(--gris);line-height:1.6}
+  .cta-rdv{background:var(--noir);padding:1.5rem;text-align:center;margin-top:1rem}
+  .cta-rdv p{color:rgba(255,255,255,.75);font-size:13px;margin-bottom:.75rem}
+  .cta-rdv a{display:inline-block;padding:.75rem 2rem;background:var(--dore);color:var(--noir);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase}
+  .cta-rdv a:hover{background:var(--dore-l)}
+  .btn-reset{display:block;width:100%;padding:.75rem;background:transparent;border:1.5px solid var(--gris-cl);color:var(--gris);font-family:var(--f-corps);font-size:13px;cursor:pointer;margin-top:1rem}
+  .btn-reset:hover{border-color:var(--dore);color:var(--noir)}
+
+  /* FOOTER */
+  footer{background:var(--noir);border-top:2px solid var(--dore);padding:2rem;text-align:center;color:rgba(255,255,255,.5);font-size:12px;line-height:1.7}
+  footer a{color:var(--dore);text-decoration:none}
+  .footer-nom{font-family:var(--f-titre);color:var(--blanc);font-size:15px;margin-bottom:.5rem}
+
+  @media(max-width:600px){
+    .scores-grille{grid-template-columns:1fr 1fr}
+    .fiches{grid-template-columns:1fr}
+    header{padding:0 1rem}
+    main{padding:1.5rem 1rem 3rem}
+    .hero-badges{gap:.5rem}
+    .retour span{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://www.3hconseils.com" class="logo-wrap">
+    <div class="logo-init">3H</div>
+    <div>
+      <span class="logo-nom">3H Conseils</span>
+      <span class="logo-tag">Formation &amp; Coaching professionnel</span>
+    </div>
+  </a>
+  <a href="https://www.3hconseils.com" class="retour"><span>Retour au site</span></a>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">Outil diagnostique gratuit — Analyse transactionnelle</p>
+  <h1>Quel est votre <span>style relationnel</span> dominant ?</h1>
+  <p class="hero-desc">8 situations du quotidien professionnel. Résultats immédiats. Une analyse complète offerte par email.</p>
+  <div class="hero-badges">
+    <span class="badge">✓ Gratuit</span>
+    <span class="badge">✓ 5 minutes</span>
+    <span class="badge">✓ Analyse PDF offerte</span>
+    <span class="badge">✓ Confidentiel</span>
+  </div>
+</div>
+
+<main>
+  <div class="consigne">
+    <strong>Mode d'emploi :</strong> Pour chacun des 8 thèmes, répartissez <strong>exactement 10 points</strong> entre les 4 comportements selon la fréquence à laquelle vous les adoptez. Vous pouvez attribuer 0 si vous n'adoptez jamais un comportement.
+  </div>
+
+  <div id="themes-container"></div>
+
+  <div class="msg-err" id="msg-err">Certains thèmes ne totalisent pas 10 points. Vérifiez les cases surlignées avant de continuer.</div>
+  <button class="btn-calc" id="btn-calc" onclick="ouvrirCapture()">Voir mes résultats →</button>
+
+  <!-- RÉSULTATS -->
+  <div class="resultats" id="resultats">
+    <h2 class="section-titre">Vos résultats</h2>
+    <div class="banniere" id="banniere">
+      <div class="dom-titre" id="dom-titre"></div>
+      <div class="dom-texte" id="dom-texte"></div>
+    </div>
+    <div class="scores-grille">
+      <div class="score-carte"><div class="sc-label">Assertivité</div><div class="sc-val sc-assertif" id="s-assertif">0</div></div>
+      <div class="score-carte"><div class="sc-label">Agressivité</div><div class="sc-val sc-agressif" id="s-agressif">0</div></div>
+      <div class="score-carte"><div class="sc-label">Fuite</div><div class="sc-val sc-fuite" id="s-fuite">0</div></div>
+      <div class="score-carte"><div class="sc-label">Abandon</div><div class="sc-val sc-abandon" id="s-abandon">0</div></div>
+    </div>
+    <div class="graphique-wrap">
+      <div class="graphique-titre">Votre profil — graphique losange</div>
+      <canvas id="losange" width="400" height="400" style="max-width:100%;height:auto"></canvas>
+    </div>
+    <h2 class="section-titre">Les 4 positions de vie</h2>
+    <div class="fiches">
+      <div class="fiche fiche-assertif"><span class="pos-tag">OK+ / OK+</span><h3>Assertivité</h3><p>Position idéale : vous vous respectez et respectez autrui. Communication directe, ouverte, orientée solutions. Vous exprimez vos besoins sans agresser ni vous soumettre.</p></div>
+      <div class="fiche fiche-agressif"><span class="pos-tag">OK+ / OK−</span><h3>Agressivité</h3><p>Posture dominante : vous vous valorisez en dévalorisant l'autre. Tendance à critiquer, contrôler, imposer. L'énergie est orientée vers la victoire au détriment de la relation.</p></div>
+      <div class="fiche fiche-fuite"><span class="pos-tag">OK− / OK+</span><h3>Fuite / Soumission</h3><p>Posture d'effacement : vous minimisez votre valeur. Évitement des conflits, difficulté à affirmer vos besoins, tendance à vous justifier ou disparaître dans les situations difficiles.</p></div>
+      <div class="fiche fiche-abandon"><span class="pos-tag">OK− / OK−</span><h3>Abandon / Retrait</h3><p>Position de résignation : ni vous ni l'autre n'êtes valorisés. Sentiment d'impuissance, découragement, repli sur soi. Cette position demande une vigilance particulière.</p></div>
+    </div>
+    <div class="cta-rdv">
+      <p>Ce diagnostic a soulevé des questions ? Un échange de 20 minutes peut changer beaucoup de choses.</p>
+      <a href="https://www.3hconseils.com/#diagnostic" target="_blank">Prendre rendez-vous — gratuit</a>
+    </div>
+    <button class="btn-reset" onclick="reinit()">↺ Recommencer le questionnaire</button>
+  </div>
+</main>
+
+<!-- MODAL CAPTURE -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <button class="modal-close" onclick="fermerCapture()" aria-label="Fermer">×</button>
+    <h2>Vos résultats sont prêts</h2>
+    <p class="modal-sub">
+      Entrez votre prénom et votre email pour afficher votre profil et recevoir votre
+      <strong>analyse complète en PDF</strong> — offerte, sans engagement.
+    </p>
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input type="text" id="prenom" placeholder="Votre prénom" autocomplete="given-name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email professionnel</label>
+      <input type="email" id="email" placeholder="votre@email.com" autocomplete="email">
+    </div>
+    <p class="modal-legal">Vos données sont utilisées uniquement pour vous envoyer l'analyse PDF. Aucun démarchage. Conformément au RGPD, vous pouvez vous désinscrire à tout moment.</p>
+    <div class="modal-msg" id="modal-msg"></div>
+    <button class="btn-submit" id="btn-submit" onclick="soumettre()">Recevoir mon analyse →</button>
+    <button class="btn-skip" onclick="afficherSansEmail()">Voir les résultats sans recevoir le PDF</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-nom">3H Conseils</div>
+  <p>Organisme de formation certifié <strong style="color:rgba(255,255,255,.7)">Qualiopi</strong> — Loire · Saint-Étienne · Lyon · Auvergne-Rhône-Alpes</p>
+  <p style="margin-top:.5rem"><a href="https://www.3hconseils.com">www.3hconseils.com</a> · <a href="mailto:hugues.hippler@3hconseils.com">hugues.hippler@3hconseils.com</a></p>
+</footer>
+
+<script>
+const BREVO_API = 'https://api.brevo.com/v3';
+const LIST_ID = 7;
+// Remplace la valeur ci-dessous par ta clé API Brevo (Paramètres > Clés API)
+const BREVO_KEY = 'REMPLACE_PAR_TA_CLE_API_BREVO';
+// URL du PDF une fois hébergé sur ton site GitHub Pages
+const PDF_URL = 'https://www.3hconseils.com/analyse-positions-de-vie-3hconseils.pdf';
+
+const THEMES = [
+  { titre:"Thème 1 — Face aux erreurs", items:[
+    {lbl:"a) Je fais le dos rond, je n'agis pas ou critique", type:"abandon"},
+    {lbl:"b) J'utilise le contrôle et la persuasion, je n'hésite pas à faire pression", type:"agressif"},
+    {lbl:"c) Je suis défait, je veux tout faire pour régler le problème même s'il faut travailler pour 10", type:"fuite"},
+    {lbl:"d) J'informe, j'analyse, je propose des occasions de développement et d'amélioration", type:"assertif"}
+  ]},
+  { titre:"Thème 2 — Face aux problèmes", items:[
+    {lbl:"a) J'essaye d'éluder, je m'arrange", type:"abandon"},
+    {lbl:"b) Je tiens aux objectifs et aussi à la qualité de la vie de chacun", type:"assertif"},
+    {lbl:"c) Je me soucie surtout de tenir les objectifs", type:"agressif"},
+    {lbl:"d) Je fais en sorte que l'on soit satisfait de moi", type:"fuite"}
+  ]},
+  { titre:"Thème 3 — Face aux règles", items:[
+    {lbl:"a) Les règles, c'est bien. Pour les autres !", type:"agressif"},
+    {lbl:"b) S'il est possible de passer outre, c'est mieux", type:"abandon"},
+    {lbl:"c) Les règles sont les règles, il faut absolument s'y coller", type:"fuite"},
+    {lbl:"d) Je pense qu'on doit s'efforcer de les suivre sans en être prisonnier", type:"assertif"}
+  ]},
+  { titre:"Thème 4 — Face aux conflits", items:[
+    {lbl:"a) Les conflits peuvent être utiles, nous en tirons souvent des occasions de progresser", type:"assertif"},
+    {lbl:"b) Je n'aime guère les conflits, ça nuit aux relations", type:"fuite"},
+    {lbl:"c) Je pense qu'il faut d'abord penser au travail et ne pas refaire le monde", type:"agressif"},
+    {lbl:"d) Ce n'est pas mon affaire", type:"abandon"}
+  ]},
+  { titre:"Thème 5 — Face à la colère", items:[
+    {lbl:"a) Je n'aime pas m'affronter à la colère, ça m'est pénible", type:"fuite"},
+    {lbl:"b) Ça me rend très désagréable et méfiant", type:"abandon"},
+    {lbl:"c) Dans ce cas, je provoque une bonne confrontation", type:"assertif"},
+    {lbl:"d) J'en veux à ceux qui se permettent ça, je rumine ma rancœur", type:"agressif"}
+  ]},
+  { titre:"Thème 6 — Face à la hiérarchie", items:[
+    {lbl:"a) Je vois bien les points faibles, je critique, je manipule", type:"agressif"},
+    {lbl:"b) Je fais de mon mieux, j'espère être apprécié", type:"fuite"},
+    {lbl:"c) Chacun son travail", type:"abandon"},
+    {lbl:"d) On discute, on échange, on négocie", type:"assertif"}
+  ]},
+  { titre:"Thème 7 — Face à l'humour", items:[
+    {lbl:"a) Je fais rire à mes dépens", type:"fuite"},
+    {lbl:"b) Je pratique l'ironie désabusée", type:"abandon"},
+    {lbl:"c) Je sais trouver les mots qui libèrent et détendent", type:"assertif"},
+    {lbl:"d) Mon humour est caustique et mordant", type:"agressif"}
+  ]},
+  { titre:"Thème 8 — Face à l'autre", items:[
+    {lbl:"a) J'y vais sans souci", type:"assertif"},
+    {lbl:"b) Viens toi, plutôt", type:"agressif"},
+    {lbl:"c) Puisqu'il faut y aller…", type:"fuite"},
+    {lbl:"d) Aller là ou ailleurs…", type:"abandon"}
+  ]}
+];
+
+const DOM_INFO = {
+  assertif:{titre:"Position dominante : Assertivité (OK+ / OK+)", cls:"b-assertif",
+    texte:"Votre style principal est l'assertivité. Vous construisez des relations fondées sur le respect mutuel. Vous savez affirmer vos positions sans écraser ni vous effacer. Piste : maintenez cette posture sous pression et accompagnez votre entourage vers cette même position."},
+  agressif:{titre:"Position dominante : Agressivité (OK+ / OK−)", cls:"b-agressif",
+    texte:"Votre style principal est l'agressivité. Vous avez tendance à vous imposer au détriment des besoins d'autrui. Votre force de conviction peut être un atout, mais elle fragilise les relations sur la durée. Piste : intégrer davantage les besoins de l'autre pour rééquilibrer vers l'assertivité."},
+  fuite:{titre:"Position dominante : Fuite / Soumission (OK− / OK+)", cls:"b-fuite",
+    texte:"Votre style principal est la fuite. Vous minimisez vos propres besoins et vous effacez dans les situations difficiles. Votre sens de la relation est réel, mais il se fait au prix de votre affirmation. Piste : renforcer l'estime de soi et apprendre à poser vos limites."},
+  abandon:{titre:"Position dominante : Abandon / Retrait (OK− / OK−)", cls:"b-abandon",
+    texte:"Votre style principal est le retrait. Résignation, repli, sentiment d'impuissance vis-à-vis de vous-même et des autres. Cette position demande une vigilance particulière : installée durablement, elle peut être associée à des états dépressifs. Un accompagnement professionnel peut être précieux."}
+};
+
+const COLS = {assertif:'#1D9E75', agressif:'#C0392B', fuite:'#B8962E', abandon:'#534AB7'};
+let scoresGlobaux = null;
+
+function buildUI(){
+  const c = document.getElementById('themes-container');
+  THEMES.forEach((t,ti)=>{
+    const card = document.createElement('div');
+    card.className='theme-card';
+    card.innerHTML=`<div class="theme-titre">${t.titre}</div><div class="theme-sous">Répartissez 10 points entre ces 4 comportements</div>`;
+    t.items.forEach((item,ii)=>{
+      const row=document.createElement('div');
+      row.className='item-row';
+      row.innerHTML=`<span class="item-label">${item.lbl}</span><input type="number" min="0" max="10" step="1" placeholder="0" class="score-input" id="t${ti}i${ii}" oninput="majTotal(${ti})">`;
+      card.appendChild(row);
+    });
+    const tl=document.createElement('div');
+    tl.className='total-ligne';
+    tl.innerHTML=`<span class="total-label">Total :</span><span class="total-val terr" id="tot${ti}">0 / 10</span>`;
+    card.appendChild(tl);
+    c.appendChild(card);
+  });
+}
+
+function getVal(ti,ii){const v=parseFloat(document.getElementById(`t${ti}i${ii}`).value);return isNaN(v)?0:v;}
+
+function majTotal(ti){
+  let sum=0;
+  for(let ii=0;ii<4;ii++) sum+=getVal(ti,ii);
+  const el=document.getElementById(`tot${ti}`);
+  el.textContent=`${sum} / 10`;
+  el.className='total-val '+(Math.round(sum*10)===100?'tok':'terr');
+  for(let ii=0;ii<4;ii++){
+    document.getElementById(`t${ti}i${ii}`).classList.toggle('err', Math.round(sum*10)!==100 && getVal(ti,ii)>0);
+  }
+}
+
+function valider(){
+  for(let ti=0;ti<8;ti++){
+    let s=0; for(let ii=0;ii<4;ii++) s+=getVal(ti,ii);
+    if(Math.round(s*10)!==100) return false;
+  }
+  return true;
+}
+
+function calculerScores(){
+  const sc={assertif:0,agressif:0,fuite:0,abandon:0};
+  THEMES.forEach((t,ti)=>t.items.forEach((item,ii)=>{ sc[item.type]+=getVal(ti,ii); }));
+  return sc;
+}
+
+function ouvrirCapture(){
+  document.getElementById('msg-err').style.display='none';
+  if(!valider()){document.getElementById('msg-err').style.display='block';return;}
+  scoresGlobaux=calculerScores();
+  document.getElementById('overlay').classList.add('actif');
+}
+
+function fermerCapture(){document.getElementById('overlay').classList.remove('actif');}
+
+function afficherSansEmail(){
+  fermerCapture();
+  afficherResultats(scoresGlobaux);
+}
+
+async function soumettre(){
+  const prenom=document.getElementById('prenom').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const msg=document.getElementById('modal-msg');
+  const btn=document.getElementById('btn-submit');
+
+  if(!prenom||!email){
+    msg.textContent='Merci de renseigner votre prénom et votre email.';
+    msg.className='modal-msg ko'; msg.style.display='block'; return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    msg.textContent='Adresse email invalide.';
+    msg.className='modal-msg ko'; msg.style.display='block'; return;
+  }
+
+  btn.disabled=true; btn.textContent='Envoi en cours…';
+
+  try {
+    const dominant=Object.keys(scoresGlobaux).reduce((a,b)=>scoresGlobaux[a]>=scoresGlobaux[b]?a:b);
+    const labelsDOM={assertif:'Assertivité',agressif:'Agressivité',fuite:'Fuite / Soumission',abandon:'Abandon / Retrait'};
+
+    // Ajout contact Brevo
+    await fetch(`${BREVO_API}/contacts`, {
+      method:'POST',
+      headers:{'api-key':BREVO_KEY,'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        email,
+        attributes:{PRENOM:prenom, POSITION_VIE:labelsDOM[dominant]},
+        listIds:[LIST_ID],
+        updateEnabled:true
+      })
+    });
+
+    // Email transactionnel Brevo
+    await fetch(`${BREVO_API}/smtp/email`, {
+      method:'POST',
+      headers:{'api-key':BREVO_KEY,'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        sender:{name:'Hugues Hippler — 3H Conseils', email:'hugues.hippler@3hconseils.com'},
+        to:[{email, name:prenom}],
+        subject:'Votre analyse — Positions de vie | 3H Conseils',
+        htmlContent:`
+<div style="font-family:Georgia,serif;max-width:580px;margin:0 auto;color:#111">
+  <div style="background:#111;padding:24px 32px;border-bottom:2px solid #B8962E">
+    <span style="color:#fff;font-size:20px;font-family:Georgia,serif">3H Conseils</span>
+    <span style="color:#B8962E;font-size:11px;margin-left:12px;letter-spacing:.1em">FORMATION & COACHING</span>
+  </div>
+  <div style="padding:32px;background:#F5F0E8">
+    <p style="font-size:16px;margin-bottom:16px">Bonjour ${prenom},</p>
+    <p style="margin-bottom:12px;line-height:1.6">Merci d'avoir réalisé le diagnostic des <strong>positions de vie</strong>.</p>
+    <p style="margin-bottom:12px;line-height:1.6">Votre position dominante est : <strong style="color:#B8962E">${labelsDOM[dominant]}</strong></p>
+    <p style="margin-bottom:24px;line-height:1.6">Vous trouverez ci-dessous le lien vers votre analyse complète (PDF) :</p>
+    <div style="text-align:center;margin-bottom:28px">
+      <a href="${PDF_URL}" style="background:#B8962E;color:#111;padding:12px 28px;text-decoration:none;font-weight:bold;font-size:14px;letter-spacing:.05em;text-transform:uppercase;display:inline-block">
+        Télécharger mon analyse PDF
+      </a>
+    </div>
+    <hr style="border:none;border-top:1px solid #D4AE5A;margin-bottom:24px">
+    <p style="line-height:1.6;margin-bottom:12px">Ce diagnostic est une photographie à un instant T. Nos positions varient selon les situations et les interlocuteurs — c'est d'ailleurs l'un des enseignements les plus riches de cet outil.</p>
+    <p style="line-height:1.6;margin-bottom:24px">Si vous souhaitez approfondir, je propose un <strong>diagnostic gratuit de 20 minutes</strong> pour échanger sur vos résultats et vos objectifs.</p>
+    <div style="text-align:center">
+      <a href="https://www.3hconseils.com/#diagnostic" style="background:#111;color:#B8962E;padding:10px 24px;text-decoration:none;font-size:13px;letter-spacing:.05em;text-transform:uppercase;display:inline-block">
+        Prendre rendez-vous
+      </a>
+    </div>
+  </div>
+  <div style="background:#111;padding:16px 32px;text-align:center">
+    <p style="color:rgba(255,255,255,.5);font-size:11px;margin:0">Hugues Hippler — 3H Conseils | hugues.hippler@3hconseils.com | www.3hconseils.com</p>
+    <p style="color:rgba(255,255,255,.3);font-size:10px;margin-top:6px">Vous recevez cet email car vous avez réalisé le diagnostic sur www.3hconseils.com. <a href="https://www.3hconseils.com" style="color:rgba(255,255,255,.3)">Se désinscrire</a></p>
+  </div>
+</div>`
+      })
+    });
+
+    msg.textContent='Email envoyé ! Vérifiez votre boîte de réception.';
+    msg.className='modal-msg ok'; msg.style.display='block';
+    btn.textContent='✓ Envoyé';
+
+    setTimeout(()=>{
+      fermerCapture();
+      afficherResultats(scoresGlobaux);
+    }, 1800);
+
+  } catch(e) {
+    msg.textContent="Une erreur s'est produite. Vos résultats s'affichent quand même.";
+    msg.className='modal-msg ko'; msg.style.display='block';
+    btn.disabled=false; btn.textContent='Réessayer';
+    setTimeout(()=>{fermerCapture();afficherResultats(scoresGlobaux);},2000);
+  }
+}
+
+function afficherResultats(sc){
+  document.getElementById('s-assertif').textContent=sc.assertif;
+  document.getElementById('s-agressif').textContent=sc.agressif;
+  document.getElementById('s-fuite').textContent=sc.fuite;
+  document.getElementById('s-abandon').textContent=sc.abandon;
+
+  const dominant=Object.keys(sc).reduce((a,b)=>sc[a]>=sc[b]?a:b);
+  const info=DOM_INFO[dominant];
+  const ban=document.getElementById('banniere');
+  ban.className='banniere '+info.cls;
+  document.getElementById('dom-titre').textContent=info.titre;
+  document.getElementById('dom-texte').textContent=info.texte;
+
+  dessinerLosange(sc);
+
+  const r=document.getElementById('resultats');
+  r.style.display='block';
+  r.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function dessinerLosange(sc){
+  const canvas=document.getElementById('losange');
+  const ctx=canvas.getContext('2d');
+  const W=400,H=400,cx=200,cy=200,maxR=150,MAX=80;
+  ctx.clearRect(0,0,W,H);
+  const axes=[
+    {key:'assertif',angle:-Math.PI/2,label:'Assertivité'},
+    {key:'agressif',angle:Math.PI/2,label:'Agressivité'},
+    {key:'fuite',angle:Math.PI,label:'Fuite'},
+    {key:'abandon',angle:0,label:'Abandon'}
+  ];
+  [.25,.5,.75,1].forEach(f=>{
+    ctx.beginPath();ctx.arc(cx,cy,maxR*f,0,2*Math.PI);
+    ctx.strokeStyle='rgba(0,0,0,0.09)';ctx.lineWidth=.75;ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);
+    if(f<1){ctx.font='10px Georgia,serif';ctx.fillStyle='#999';ctx.textAlign='left';ctx.fillText(Math.round(MAX*f),cx+4,cy-maxR*f+4);}
+  });
+  axes.forEach(a=>{
+    ctx.beginPath();ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+Math.cos(a.angle)*maxR,cy+Math.sin(a.angle)*maxR);
+    ctx.strokeStyle='rgba(0,0,0,.18)';ctx.lineWidth=1;ctx.stroke();
+  });
+  ctx.beginPath();
+  axes.forEach((a,i)=>{
+    const r=Math.min(sc[a.key]/MAX,1)*maxR;
+    const x=cx+Math.cos(a.angle)*r,y=cy+Math.sin(a.angle)*r;
+    if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+  });
+  ctx.closePath();ctx.fillStyle='rgba(184,150,46,.15)';ctx.fill();
+  ctx.strokeStyle='#B8962E';ctx.lineWidth=2;ctx.stroke();
+  axes.forEach(a=>{
+    const r=Math.min(sc[a.key]/MAX,1)*maxR;
+    const x=cx+Math.cos(a.angle)*r,y=cy+Math.sin(a.angle)*r;
+    ctx.beginPath();ctx.arc(x,y,6,0,2*Math.PI);
+    ctx.fillStyle=COLS[a.key];ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+    const lx=cx+Math.cos(a.angle)*(maxR+28),ly=cy+Math.sin(a.angle)*(maxR+28);
+    ctx.font='bold 12px Georgia,serif';ctx.fillStyle=COLS[a.key];
+    ctx.textAlign=a.angle===0?'left':Math.abs(a.angle)===Math.PI?'right':'center';
+    ctx.fillText(a.label,lx,ly);
+    ctx.font='11px Georgia,serif';ctx.fillStyle='#555';
+    ctx.fillText('('+sc[a.key]+' pts)',lx,ly+15);
+  });
+}
+
+function reinit(){
+  THEMES.forEach((_,ti)=>{
+    for(let ii=0;ii<4;ii++){
+      const inp=document.getElementById(`t${ti}i${ii}`);
+      inp.value='';inp.classList.remove('err');
+    }
+    const el=document.getElementById(`tot${ti}`);
+    el.textContent='0 / 10';el.className='total-val terr';
+  });
+  scoresGlobaux=null;
+  document.getElementById('resultats').style.display='none';
+  document.getElementById('msg-err').style.display='none';
+  document.getElementById('prenom').value='';
+  document.getElementById('email').value='';
+  document.getElementById('btn-submit').disabled=false;
+  document.getElementById('btn-submit').textContent='Recevoir mon analyse →';
+  document.getElementById('modal-msg').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+buildUI();
+</script>
+</body>
+</html>
