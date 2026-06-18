@@ -1,16 +1,20 @@
-MISE À JOUR GEO — 3H Conseils — 18/06/2026
-==========================================
-Remplacez ces fichiers dans votre dossier local (racine du site),
-puis commit + push via GitHub Desktop.
+PAGES-RESSOURCES GEO — 3H Conseils — 18/06/2026
+================================================
+Déposez ces fichiers à la RACINE de votre site (par-dessus les existants
+pour les 2 pages formation + sitemap), puis commit + push via GitHub Desktop.
 
-CE QUI A CHANGÉ :
-- 28 pages HTML : ajout d'un bloc JSON-LD "WebPage" avec dateModified
-  (signal de fraîcheur lu par les IA et Google).
-- 4 pages sans schéma reçoivent en plus un schéma Course/Service :
-  preparation-mentale-saint-etienne, preparation-mentale-etrat,
-  formation-coaching-adultes, formation-entreprise-etrat.
-- sitemap.xml : lastmod passé au 18/06/2026.
+NOUVELLES PAGES (2) :
+- gerer-conflit-equipe.html
+- gerer-stress-emotions-travail.html
+  -> Réponse directe en tête, listes numérotées, tableau, FAQ balisée
+     (schémas Article + FAQPage avec dateModified). Optimisées pour la
+     citation par les IA (ChatGPT, Perplexity, Claude, Gemini).
 
-À RETENIR : la date dateModified doit refléter une VRAIE mise à jour.
-À chaque modification réelle d'une page, repassez sa date au jour J.
-(Je peux automatiser ce rafraîchissement plus tard.)
+FICHIERS MIS À JOUR (3) :
+- formation-gestion-conflits-saint-etienne.html : lien vers la ressource conflit
+- preparation-mentale.html : lien vers la ressource stress/émotions
+- sitemap.xml : les 2 nouvelles pages ajoutées
+
+ASTUCE CITABILITÉ : pour renforcer encore ces pages, ajoutez-y vos propres
+chiffres terrain vérifiables (ex. nb de participants, durée moyenne d'une
+régulation) — les données concrètes sont davantage citées par les IA.
