@@ -1,0 +1,16 @@
+MISE À JOUR GEO — 3H Conseils — 18/06/2026
+==========================================
+Remplacez ces fichiers dans votre dossier local (racine du site),
+puis commit + push via GitHub Desktop.
+
+CE QUI A CHANGÉ :
+- 28 pages HTML : ajout d'un bloc JSON-LD "WebPage" avec dateModified
+  (signal de fraîcheur lu par les IA et Google).
+- 4 pages sans schéma reçoivent en plus un schéma Course/Service :
+  preparation-mentale-saint-etienne, preparation-mentale-etrat,
+  formation-coaching-adultes, formation-entreprise-etrat.
+- sitemap.xml : lastmod passé au 18/06/2026.
+
+À RETENIR : la date dateModified doit refléter une VRAIE mise à jour.
+À chaque modification réelle d'une page, repassez sa date au jour J.
+(Je peux automatiser ce rafraîchissement plus tard.)
