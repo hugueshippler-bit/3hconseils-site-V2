@@ -1,20 +1,15 @@
-PAGES-RESSOURCES GEO — 3H Conseils — 18/06/2026
-================================================
-Déposez ces fichiers à la RACINE de votre site (par-dessus les existants
-pour les 2 pages formation + sitemap), puis commit + push via GitHub Desktop.
+MISE À JOUR LOGO + FAVICON (v2, basée sur votre repo réel) — 19/06/2026
+=========================================================================
+Cette version a été reconstruite à partir d'un export FRAIS de votre
+repo GitHub (téléchargé par vous le 19/06 au soir), donc elle contient
+bien votre balise de vérification Bing (msvalidate.01) en plus du
+nouveau logo et du favicon. Rien de ce que vous aviez déjà déployé
+n'a été perdu.
 
-NOUVELLES PAGES (2) :
-- gerer-conflit-equipe.html
-- gerer-stress-emotions-travail.html
-  -> Réponse directe en tête, listes numérotées, tableau, FAQ balisée
-     (schémas Article + FAQPage avec dateModified). Optimisées pour la
-     citation par les IA (ChatGPT, Perplexity, Claude, Gemini).
+Déposez tout ce paquet à la racine de votre site (les .html remplacent
+les existants, le contenu de assets/img/ s'ajoute), puis commit + push.
 
-FICHIERS MIS À JOUR (3) :
-- formation-gestion-conflits-saint-etienne.html : lien vers la ressource conflit
-- preparation-mentale.html : lien vers la ressource stress/émotions
-- sitemap.xml : les 2 nouvelles pages ajoutées
-
-ASTUCE CITABILITÉ : pour renforcer encore ces pages, ajoutez-y vos propres
-chiffres terrain vérifiables (ex. nb de participants, durée moyenne d'une
-régulation) — les données concrètes sont davantage citées par les IA.
+À VÉRIFIER APRÈS DÉPLOIEMENT :
+- L'icône HHH doit apparaître dans l'onglet du navigateur.
+- Le logo en haut de page doit avoir la même couleur qu'avant (normal,
+  c'est juste un tracé plus net).
