@@ -11,7 +11,6 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>
-    // Redirections automatiques des anciennes URLs
     const redirects = {
       '/book-online':             'https://cal.eu/3hconseils/diagnostic-gratuit-20-minutes',
       '/mentions-legales-1':      '/mentions-legales.html',
@@ -20,6 +19,7 @@
     };
     const path = window.location.pathname.replace(/\/$/, '');
     if (redirects[path]) {
+      document.write('<meta http-equiv="refresh" content="0; url=' + redirects[path] + '">');
       window.location.replace(redirects[path]);
     }
   </script>
