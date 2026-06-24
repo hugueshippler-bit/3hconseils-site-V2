@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Aperçu — Section Preuve Sociale — 3H Conseils</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --creme: #F5F0E8;
+    --creme-carte: #FCFAF6;
+    --noir: #111111;
+    --noir-doux: #2A2724;
+    --or: #B8962E;
+    --or-clair: #D4B86A;
+    --ligne: #E2D9C8;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    background:var(--creme);
+    color:var(--noir);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:1100px;
+    margin:0 auto;
+    padding:120px 40px 140px;
+  }
+
+  /* ===== EN-TÊTE DE SECTION ===== */
+  .section-eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--or);
+    font-weight:600;
+    text-align:center;
+    margin-bottom:18px;
+  }
+
+  .section-title{
+    font-family:'Fraunces',serif;
+    font-size:42px;
+    font-weight:500;
+    text-align:center;
+    color:var(--noir);
+    letter-spacing:-0.01em;
+    margin-bottom:64px;
+  }
+
+  /* ===== BANDEAU MANCHETTE — CONFIANCE INSTITUTIONNELLE ===== */
+  .manchette{
+    text-align:center;
+    padding:48px 20px 56px;
+    margin-bottom:80px;
+    position:relative;
+  }
+
+  .manchette::before,
+  .manchette::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    width:1px;
+    height:32px;
+    background:var(--or);
+    opacity:0.55;
+  }
+  .manchette::before{ top:0; transform:translateX(-50%); }
+  .manchette::after{ bottom:0; transform:translateX(-50%); }
+
+  .manchette-intro{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:21px;
+    color:var(--noir-doux);
+    margin-bottom:14px;
+    font-weight:400;
+  }
+
+  .manchette-liste{
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    letter-spacing:0.04em;
+    color:var(--noir);
+    line-height:2.1;
+    max-width:680px;
+    margin:0 auto;
+    font-weight:500;
+  }
+
+  .manchette-liste .sep{
+    color:var(--or);
+    margin:0 12px;
+    font-weight:400;
+  }
+
+  /* ===== GRILLE D'AVIS ===== */
+  .avis-grille{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+
+  .avis-carte{
+    background:var(--creme-carte);
+    border:1px solid var(--ligne);
+    border-radius:2px;
+    padding:36px 32px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+  }
+
+  .avis-etoiles{
+    display:flex;
+    gap:4px;
+    margin-bottom:20px;
+  }
+
+  .avis-etoiles svg{
+    width:14px;
+    height:14px;
+    fill:var(--or);
+  }
+
+  .avis-texte{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--noir-doux);
+    font-weight:400;
+    flex-grow:1;
+    margin-bottom:24px;
+  }
+
+  .avis-texte::before{
+    content:'\201C';
+    color:var(--or-clair);
+    font-size:1.1em;
+  }
+  .avis-texte::after{
+    content:'\201D';
+    color:var(--or-clair);
+    font-size:1.1em;
+  }
+
+  .avis-pied{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-top:1px solid var(--ligne);
+    padding-top:16px;
+  }
+
+  .avis-auteur{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    color:var(--noir);
+  }
+
+  .avis-meta{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    color:#8A8278;
+    letter-spacing:0.02em;
+  }
+
+  /* ===== PIED DE SECTION ===== */
+  .source-note{
+    text-align:center;
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    color:#8A8278;
+    margin-top:48px;
+    letter-spacing:0.02em;
+  }
+
+  @media (max-width: 860px){
+    .avis-grille{ grid-template-columns:1fr; }
+    .section-title{ font-size:32px; }
+    .manchette-liste{ line-height:1.9; }
+    .manchette-liste .sep{ display:none; }
+    .manchette-liste span.item{ display:block; margin-bottom:6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="section-eyebrow">Ce qu'ils en disent</div>
+  <h2 class="section-title">Avis &amp; confiance</h2>
+
+  <!-- BANDEAU MANCHETTE -->
+  <div class="manchette">
+    <p class="manchette-intro">Ils me font confiance</p>
+    <p class="manchette-liste">
+      <span class="item">Sociétés industrielles internationales</span><span class="sep">·</span>
+      <span class="item">Établissements hospitaliers publics</span><span class="sep">·</span>
+      <span class="item">Universités</span><span class="sep">·</span>
+      <span class="item">Structures sportives de haut niveau</span>
+    </p>
+  </div>
+
+  <!-- GRILLE D'AVIS -->
+  <div class="avis-grille">
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">La formation est claire, dynamique et concrète. Un formateur compétent et bienveillant, qui sait transmettre son expérience avec pédagogie.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">H. A.</span>
+        <span class="avis-meta">Formation</span>
+      </div>
+    </div>
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">Un coaching qui se vit avec une approche singulière, des questions qui mènent à l'introspection, toujours dans la bienveillance et le professionnalisme.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">V. C.</span>
+        <span class="avis-meta">Coaching pro</span>
+      </div>
+    </div>
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">Pédagogie bienveillante et professionnalisme : j'ai progressé techniquement, mais aussi gagné en rigueur et en motivation.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">A. B.</span>
+        <span class="avis-meta">Coaching, 2 ans</span>
+      </div>
+    </div>
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">Professionnalisme, réactivité et investissement envers la promotion durant ces deux années d'accompagnement.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">C. V.</span>
+        <span class="avis-meta">Formation BTS</span>
+      </div>
+    </div>
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">Il a su s'adapter à mon besoin et lever les freins que je m'imposais. Un accompagnement qui m'a permis d'assurer mes missions avec sérénité.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">I. M.</span>
+        <span class="avis-meta">Prise de parole</span>
+      </div>
+    </div>
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">Son empathie, son accompagnement et ses conseils m'ont permis d'entamer un nouveau cycle professionnel de manière plus sereine.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">E. B.</span>
+        <span class="avis-meta">Coaching pro</span>
+      </div>
+    </div>
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">Il cerne rapidement les personnes qu'il accompagne et identifie les axes d'amélioration. Conseils et exercices simples, adaptés et efficaces.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">L. B.</span>
+        <span class="avis-meta">Coaching pro</span>
+      </div>
+    </div>
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">Un coaching personnalisé en sessions Teams qui m'a énormément apporté. Grande écoute, conseils que j'applique au quotidien.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">F. P.</span>
+        <span class="avis-meta">Coaching entreprise</span>
+      </div>
+    </div>
+
+    <div class="avis-carte">
+      <div class="avis-etoiles">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="avis-texte">Proactif et très à l'écoute, il a trouvé les clés qui m'ont permis de trouver un nouveau poste en un temps record.</p>
+      <div class="avis-pied">
+        <span class="avis-auteur">D. M.</span>
+        <span class="avis-meta">Réorientation pro</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="source-note">Avis vérifiés — issus de Google et des enquêtes de satisfaction 3H Conseils</p>
+
+</div>
+
+</body>
+</html>
