@@ -4,14 +4,14 @@
   <!-- Pages principales -->
   <url>
     <loc>https://www.3hconseils.com/</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://www.3hconseils.com/formations.html</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -32,14 +32,14 @@
 
   <url>
     <loc>https://www.3hconseils.com/quiz.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.3hconseils.com/qui-sommes-nous.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -61,28 +61,28 @@
   <!-- Pages locales SEO -->
   <url>
     <loc>https://www.3hconseils.com/formation-gestion-conflits-saint-etienne.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://www.3hconseils.com/formation-management-loire.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://www.3hconseils.com/formation-prise-parole-lyon.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://www.3hconseils.com/formation-communication-etrat.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -103,7 +103,7 @@
 
   <url>
     <loc>https://www.3hconseils.com/formation-entreprise-etrat.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -139,7 +139,7 @@
 
   <url>
     <loc>https://www.3hconseils.com/qualiopi-opco.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
