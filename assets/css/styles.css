@@ -710,6 +710,31 @@ textarea { resize: vertical; min-height: 120px; }
 .block { margin-bottom: 32px; }
 
 /* ============================================================
+   GRILLE PORTRAIT + BIO (fondateur) — responsive
+   Remplace les anciens grid-template-columns fixes en px
+   qui débordaient sur mobile (< colonne photo + gap + texte).
+   ============================================================ */
+.founder-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.founder-grid.founder-grid-lg { grid-template-columns: 260px 1fr; gap: 56px; align-items: start; }
+
+@media (max-width: 768px) {
+  .founder-grid,
+  .founder-grid.founder-grid-lg {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+  .founder-grid > div:first-child { max-width: 180px; margin: 0 auto; }
+  .founder-grid .gold-divider.centered,
+  .founder-grid .gold-divider { margin-left: auto; margin-right: auto; }
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 640px) {
