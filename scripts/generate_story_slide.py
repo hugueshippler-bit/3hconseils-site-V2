@@ -25,6 +25,7 @@ assets/social/stories/{jour}/ sur le dépôt GitHub hugueshippler-bit/3hconseils
 
 import argparse
 import os
+import re
 import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
@@ -33,6 +34,21 @@ W, H = 1080, 1920
 NOIR = (17, 17, 17)
 CREME = (245, 240, 232)
 DORE = (165, 145, 92)
+
+
+def typo_fr(s):
+    """Applique les règles de typographie française :
+    - apostrophe typographique (') au lieu de l'apostrophe droite (')
+    - nombre et % collés (90% et non 90 %)
+    - espace insécable avant ; : ! ?
+    Appliqué systématiquement à tout texte affiché, pour que la règle
+    tienne sans avoir à y repenser à chaque nouveau texte."""
+    if not s:
+        return s
+    s = s.replace("'", "\u2019")
+    s = re.sub(r"(\d)\s?%", r"\1%", s)
+    s = re.sub(r"\s*([;:!?])", "\u00A0" + r"\1", s)
+    return s
 
 # Le script cherche les fontes Playfair Display dans ./fonts (à côté de ce
 # script) ou dans /home/claude/fonts. Récupérez les fichiers .ttf depuis
@@ -89,9 +105,36 @@ def draw_frame(draw):
     )
 
 
-def draw_logo(draw, color=DORE):
-    """Logo texte '3H CONSEILS' sobre, centré en haut."""
-    f = font(34, "bold")
+LOGO_CANDIDATES = [
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "img", "logo-3hconseils-v2.png"),
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "img", "logo-3hconseils-v2.png"),
+    "/home/claude/repo/assets/img/logo-3hconseils-v2.png",
+]
+
+
+def _find_logo():
+    for p in LOGO_CANDIDATES:
+        if os.path.isfile(p):
+            return p
+    return None
+
+
+def draw_logo(draw, img=None, color=DORE):
+    """Insère le vrai logo 3H Conseils (monogramme HHH + baseline) si le
+    fichier est disponible ; retombe sur un texte si le fichier est absent,
+    pour ne jamais bloquer la génération."""
+    logo_path = _find_logo()
+    if img is not None and logo_path:
+        logo = Image.open(logo_path).convert("RGBA")
+        target_w = 460
+        ratio = target_w / logo.width
+        logo = logo.resize((target_w, int(logo.height * ratio)))
+        x = (W - logo.width) // 2
+        y = 90
+        img.alpha_composite(logo, (x, y))
+        return
+    # Fallback texte si le logo n'est pas trouvé.
+    f = font(40, "bold")
     text = "3H CONSEILS"
     bbox = draw.textbbox((0, 0), text, font=f)
     tw = bbox[2] - bbox[0]
@@ -116,19 +159,58 @@ def wrap_and_draw(draw, text, f, y_center, max_width_px, fill, line_spacing=1.35
         y += line_height
 
 
-def base_canvas():
-    img = Image.new("RGB", (W, H), NOIR)
+def draw_icon(draw, categorie):
+    """Icône discrète sous le logo, propre à chaque catégorie de citation.
+    Reste dans la palette dorée pour ne jamais casser l'harmonisation."""
+    import math
+
+    cx, cy = W / 2, 470
+
+    if categorie == "sportif":
+        # Petit rameau de laurier stylisé (deux arcs symétriques de tigelles).
+        for side in (-1, 1):
+            for i in range(6):
+                angle = math.radians(90 + side * (18 + i * 11))
+                x1 = cx + side * 10 + 22 * math.cos(angle)
+                y1 = cy + 22 * math.sin(angle)
+                x2 = cx + side * 10 + 40 * math.cos(angle)
+                y2 = cy + 40 * math.sin(angle)
+                draw.line([x1, y1, x2, y2], fill=DORE, width=3)
+    elif categorie == "philosophe":
+        # Petite colonne grecque (chapiteau, fût cannelé, base).
+        draw.rectangle([cx - 32, cy - 22, cx + 32, cy - 15], fill=DORE)
+        draw.rectangle([cx - 24, cy - 15, cx + 24, cy + 20], outline=DORE, width=3)
+        for lx in range(-16, 17, 8):
+            draw.line([cx + lx, cy - 15, cx + lx, cy + 20], fill=DORE, width=2)
+        draw.rectangle([cx - 32, cy + 20, cx + 32, cy + 27], fill=DORE)
+    elif categorie == "mecanisme":
+        # Petite spirale (pensée en mouvement) plutôt qu'un cerveau figuratif.
+        points = []
+        for t in range(0, 640, 6):
+            rad = math.radians(t)
+            rr = 2 + t / 22
+            points.append((cx + rr * math.cos(rad), cy + rr * math.sin(rad)))
+        draw.line(points, fill=DORE, width=3)
+    # categorie=None ou inconnue -> pas d'icône (témoignage, définition, cta)
+
+
+def base_canvas(categorie=None):
+    img = Image.new("RGBA", (W, H), (*NOIR, 255))
     draw = ImageDraw.Draw(img)
     draw_frame(draw)
-    draw_logo(draw)
+    draw_logo(draw, img)
+    if categorie:
+        draw_icon(draw, categorie)
     return img, draw
 
 
-def slide_citation(text, auteur=None, out="out/1-citation.png"):
-    img, draw = base_canvas()
+def slide_citation(text, auteur=None, out="out/1-citation.png", categorie=None):
+    text = typo_fr(text)
+    auteur = typo_fr(auteur)
+    img, draw = base_canvas(categorie)
     f_quote = font(58, "italic")
-    f_auteur = font(30, "regular")
-    wrap_and_draw(draw, f"« {text} »", f_quote, H / 2, W - 220, CREME)
+    f_auteur = font(36, "regular")
+    wrap_and_draw(draw, f"«\u00A0{text}\u00A0»", f_quote, H / 2, W - 220, CREME)
     if auteur:
         f = f_auteur
         bbox = draw.textbbox((0, 0), f"— {auteur}", font=f)
@@ -138,6 +220,8 @@ def slide_citation(text, auteur=None, out="out/1-citation.png"):
 
 
 def slide_temoignage(text, auteur=None, out="out/3-temoignage.png"):
+    text = typo_fr(text)
+    auteur = typo_fr(auteur)
     img, draw = base_canvas()
     f_label = font(30, "bold")
     label = "TÉMOIGNAGE"
@@ -146,10 +230,10 @@ def slide_temoignage(text, auteur=None, out="out/3-temoignage.png"):
     draw.text(((W - tw) / 2, H / 2 - 320), label, font=f_label, fill=DORE)
 
     f_quote = font(48, "italic")
-    wrap_and_draw(draw, f"« {text} »", f_quote, H / 2, W - 220, CREME)
+    wrap_and_draw(draw, f"«\u00A0{text}\u00A0»", f_quote, H / 2, W - 220, CREME)
 
     if auteur:
-        f = font(28, "regular")
+        f = font(36, "regular")
         bbox = draw.textbbox((0, 0), auteur, font=f)
         tw = bbox[2] - bbox[0]
         draw.text(((W - tw) / 2, H / 2 + 260), auteur, font=f, fill=DORE)
@@ -157,6 +241,8 @@ def slide_temoignage(text, auteur=None, out="out/3-temoignage.png"):
 
 
 def slide_definition(titre, text, out="out/4-definition.png"):
+    titre = typo_fr(titre)
+    text = typo_fr(text)
     img, draw = base_canvas()
     f_titre = font(46, "bold")
     bbox = draw.textbbox((0, 0), titre, font=f_titre)
@@ -169,6 +255,7 @@ def slide_definition(titre, text, out="out/4-definition.png"):
 
 
 def slide_cta(text, sous_texte="3hconseils.com", out="out/5-cta.png"):
+    text = typo_fr(text)
     img, draw = base_canvas()
     f_cta = font(52, "bold")
     wrap_and_draw(draw, text, f_cta, H / 2 - 40, W - 220, CREME)
@@ -182,7 +269,7 @@ def slide_cta(text, sous_texte="3hconseils.com", out="out/5-cta.png"):
 
 def _save(img, out):
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
-    img.save(out, "PNG")
+    img.convert("RGB").save(out, "PNG")
     print(f"Généré : {out} ({W}x{H})")
 
 
@@ -193,11 +280,13 @@ def main():
     p.add_argument("--titre", default=None, help="Requis pour --type definition")
     p.add_argument("--auteur", default=None, help="Optionnel pour citation/temoignage")
     p.add_argument("--sous-texte", default="3hconseils.com", help="Optionnel pour cta")
+    p.add_argument("--categorie", default=None, choices=["sportif", "philosophe", "mecanisme"],
+                    help="Optionnel pour citation : ajoute une icône de catégorie")
     p.add_argument("--out", default=None)
     args = p.parse_args()
 
     if args.type == "citation":
-        slide_citation(args.text, args.auteur, args.out or "out/1-citation.png")
+        slide_citation(args.text, args.auteur, args.out or "out/1-citation.png", args.categorie)
     elif args.type == "temoignage":
         slide_temoignage(args.text, args.auteur, args.out or "out/3-temoignage.png")
     elif args.type == "definition":
