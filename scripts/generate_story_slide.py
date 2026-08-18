@@ -141,22 +141,34 @@ def draw_logo(draw, img=None, color=DORE):
     draw.text(((W - tw) / 2, 110), text, font=f, fill=color)
 
 
-def wrap_and_draw(draw, text, f, y_center, max_width_px, fill, line_spacing=1.35):
-    """Centre un bloc de texte multi-lignes verticalement autour de y_center."""
-    # Estimation du nombre de caractères par ligne à partir de la taille de fonte
+def wrap_lines(draw, text, f, max_width_px):
+    """Calcule les lignes d'un bloc de texte sans le dessiner (pour connaître
+    sa hauteur avant de décider où le positionner)."""
     avg_char_w = f.getlength("n") or (f.size * 0.55)
     chars_per_line = max(10, int(max_width_px / avg_char_w))
-    lines = textwrap.wrap(text, width=chars_per_line)
+    return textwrap.wrap(text, width=chars_per_line)
 
+
+def draw_lines(draw, lines, f, top_y, fill, line_spacing=1.35):
+    """Dessine des lignes déjà calculées à partir de top_y, centrées
+    horizontalement. Retourne la position Y juste après la dernière ligne."""
     line_height = f.size * line_spacing
-    total_h = line_height * len(lines)
-    y = y_center - total_h / 2
-
+    y = top_y
     for line in lines:
         bbox = draw.textbbox((0, 0), line, font=f)
         lw = bbox[2] - bbox[0]
         draw.text(((W - lw) / 2, y), line, font=f, fill=fill)
         y += line_height
+    return y
+
+
+def wrap_and_draw(draw, text, f, y_center, max_width_px, fill, line_spacing=1.35):
+    """Centre un bloc de texte multi-lignes verticalement autour de y_center."""
+    lines = wrap_lines(draw, text, f, max_width_px)
+    line_height = f.size * line_spacing
+    total_h = line_height * len(lines)
+    y = y_center - total_h / 2
+    return draw_lines(draw, lines, f, y, fill, line_spacing)
 
 
 def draw_icon(draw, categorie):
@@ -210,12 +222,16 @@ def slide_citation(text, auteur=None, out="out/1-citation.png", categorie=None):
     img, draw = base_canvas(categorie)
     f_quote = font(58, "italic")
     f_auteur = font(36, "regular")
-    wrap_and_draw(draw, f"«\u00A0{text}\u00A0»", f_quote, H / 2, W - 220, CREME)
+    lines = wrap_lines(draw, f"«\u00A0{text}\u00A0»", f_quote, W - 220)
+    line_height = f_quote.size * 1.35
+    block_h = line_height * len(lines)
+    top_y = H / 2 - block_h / 2
+    bottom_y = draw_lines(draw, lines, f_quote, top_y, CREME)
     if auteur:
-        f = f_auteur
-        bbox = draw.textbbox((0, 0), f"— {auteur}", font=f)
+        ay = bottom_y + 50
+        bbox = draw.textbbox((0, 0), f"— {auteur}", font=f_auteur)
         tw = bbox[2] - bbox[0]
-        draw.text(((W - tw) / 2, H / 2 + 220), f"— {auteur}", font=f, fill=DORE)
+        draw.text(((W - tw) / 2, ay), f"— {auteur}", font=f_auteur, fill=DORE)
     _save(img, out)
 
 
@@ -227,16 +243,21 @@ def slide_temoignage(text, auteur=None, out="out/3-temoignage.png"):
     label = "TÉMOIGNAGE"
     bbox = draw.textbbox((0, 0), label, font=f_label)
     tw = bbox[2] - bbox[0]
-    draw.text(((W - tw) / 2, H / 2 - 320), label, font=f_label, fill=DORE)
+    label_y = H / 2 - 360
+    draw.text(((W - tw) / 2, label_y), label, font=f_label, fill=DORE)
 
-    f_quote = font(48, "italic")
-    wrap_and_draw(draw, f"«\u00A0{text}\u00A0»", f_quote, H / 2, W - 220, CREME)
+    f_quote = font(44, "italic")
+    lines = wrap_lines(draw, f"«\u00A0{text}\u00A0»", f_quote, W - 220)
+    line_height = f_quote.size * 1.3
+    quote_top = label_y + 80
+    bottom_y = draw_lines(draw, lines, f_quote, quote_top, CREME, line_spacing=1.3)
 
     if auteur:
         f = font(36, "regular")
+        ay = bottom_y + 40
         bbox = draw.textbbox((0, 0), auteur, font=f)
         tw = bbox[2] - bbox[0]
-        draw.text(((W - tw) / 2, H / 2 + 260), auteur, font=f, fill=DORE)
+        draw.text(((W - tw) / 2, ay), auteur, font=f, fill=DORE)
     _save(img, out)
 
 
