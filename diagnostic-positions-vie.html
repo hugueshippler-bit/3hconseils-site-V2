@@ -85,8 +85,6 @@
   .btn-submit{display:block;width:100%;padding:.875rem;background:var(--dore);color:var(--noir);border:none;font-family:var(--f-corps);font-size:15px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;margin-top:1rem;transition:background .15s}
   .btn-submit:hover{background:var(--dore-l)}
   .btn-submit:disabled{opacity:.5;cursor:not-allowed}
-  .btn-skip{display:block;width:100%;margin-top:.75rem;padding:.5rem;background:none;border:1px solid var(--gris-cl);font-size:13px;color:var(--gris);cursor:pointer;font-family:var(--f-corps)}
-  .btn-skip:hover{border-color:var(--dore);color:var(--noir)}
   .modal-msg{font-size:13px;margin-top:.5rem;display:none}
   .modal-msg.ok{color:var(--assertif)} .modal-msg.ko{color:var(--agressif)}
 
@@ -258,7 +256,6 @@
       <div class="modal-msg" id="modal-msg"></div>
       <button class="btn-submit" id="btn-submit" type="submit">Recevoir mon analyse →</button>
     </form>
-    <button class="btn-skip" onclick="afficherSansEmail()">Voir les résultats sans recevoir le PDF</button>
   </div>
 </div>
 
@@ -429,11 +426,6 @@ function ouvrirCapture(){
 }
 
 function fermerCapture(){document.getElementById('overlay').classList.remove('actif');}
-
-function afficherSansEmail(){
-  fermerCapture();
-  afficherResultats(scoresGlobaux);
-}
 
 function validerEtEnvoyer(){
   const prenom=document.getElementById('PRENOM').value.trim();
