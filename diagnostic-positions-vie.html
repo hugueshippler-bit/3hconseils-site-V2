@@ -230,6 +230,8 @@
 </main>
 
 <!-- MODAL CAPTURE -->
+<!-- iframe cachee : cible du formulaire Brevo, evite de quitter la page -->
+<iframe name="brevo-target" style="display:none" title="envoi-brevo"></iframe>
 <div class="overlay" id="overlay">
   <div class="modal">
     <button class="modal-close" onclick="fermerCapture()" aria-label="Fermer">×</button>
@@ -238,17 +240,24 @@
       Entrez votre prénom et votre email pour afficher votre profil et recevoir votre
       <strong>analyse complète en PDF</strong> — offerte, sans engagement.
     </p>
-    <div class="form-group">
-      <label for="prenom">Prénom</label>
-      <input type="text" id="prenom" placeholder="Votre prénom" autocomplete="given-name">
-    </div>
-    <div class="form-group">
-      <label for="email">Email professionnel</label>
-      <input type="email" id="email" placeholder="votre@email.com" autocomplete="email">
-    </div>
-    <p class="modal-legal">Vos données sont utilisées uniquement pour vous envoyer l'analyse PDF. Aucun démarchage. Conformément au RGPD, vous pouvez vous désinscrire à tout moment.</p>
-    <div class="modal-msg" id="modal-msg"></div>
-    <button class="btn-submit" id="btn-submit" onclick="soumettre()">Recevoir mon analyse →</button>
+    <form id="brevo-lead-form" method="POST"
+          action="https://cafe9f14.sibforms.com/serve/MUIFAPX6DQJp3Mz34AhE68zufvBPjAQ8djDTvshLITfM_kREo9-ySpx70F-cUjd5StZg-hetDSJo8SAtjHTXe4ApYCy3CSKZbQYblL2NhdJMsDULMC8EO6xyqEb6zWC9ZQL2CcZin_s_oAOO2tSai9jRSGUigUV20ruq1ZMr9IbUhHfTdxSJQUAMg5Bla1W3jxBcyUpz8K8KgN0n9w=="
+          target="brevo-target" onsubmit="return validerEtEnvoyer()">
+      <div class="form-group">
+        <label for="PRENOM">Prénom</label>
+        <input type="text" id="PRENOM" name="PRENOM" placeholder="Votre prénom" autocomplete="given-name">
+      </div>
+      <div class="form-group">
+        <label for="EMAIL">Email professionnel</label>
+        <input type="email" id="EMAIL" name="EMAIL" placeholder="votre@email.com" autocomplete="email">
+      </div>
+      <input type="hidden" id="POSITION_VIE" name="POSITION_VIE" value="">
+      <input type="hidden" name="locale" value="fr">
+      <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off">
+      <p class="modal-legal">Vos données sont utilisées uniquement pour vous envoyer l'analyse PDF. Aucun démarchage. Conformément au RGPD, vous pouvez vous désinscrire à tout moment.</p>
+      <div class="modal-msg" id="modal-msg"></div>
+      <button class="btn-submit" id="btn-submit" type="submit">Recevoir mon analyse →</button>
+    </form>
     <button class="btn-skip" onclick="afficherSansEmail()">Voir les résultats sans recevoir le PDF</button>
   </div>
 </div>
@@ -296,10 +305,7 @@
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
 <script>
-const BREVO_API = 'https://api.brevo.com/v3';
-const LIST_ID = 7;
-// Remplace la valeur ci-dessous par ta clé API Brevo (Paramètres > Clés API)
-const BREVO_KEY = 'xkeysib-06ea745308e837103db554d7a5cf00be3227ee7fa0c';
+// Le contact et son resultat sont envoyes directement a Brevo via le formulaire natif (voir plus bas dans le HTML) - plus besoin de cle API ici.
 // URL du PDF une fois hébergé sur ton site GitHub Pages
 const PDF_URL = 'https://www.3hconseils.com/analyse-positions-de-vie-3hconseils.pdf';
 
@@ -429,95 +435,38 @@ function afficherSansEmail(){
   afficherResultats(scoresGlobaux);
 }
 
-async function soumettre(){
-  const prenom=document.getElementById('prenom').value.trim();
-  const email=document.getElementById('email').value.trim();
+function validerEtEnvoyer(){
+  const prenom=document.getElementById('PRENOM').value.trim();
+  const email=document.getElementById('EMAIL').value.trim();
   const msg=document.getElementById('modal-msg');
   const btn=document.getElementById('btn-submit');
 
   if(!prenom||!email){
     msg.textContent='Merci de renseigner votre prénom et votre email.';
-    msg.className='modal-msg ko'; msg.style.display='block'; return;
+    msg.className='modal-msg ko'; msg.style.display='block'; return false;
   }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     msg.textContent='Adresse email invalide.';
-    msg.className='modal-msg ko'; msg.style.display='block'; return;
+    msg.className='modal-msg ko'; msg.style.display='block'; return false;
   }
+
+  const dominant=Object.keys(scoresGlobaux).reduce((a,b)=>scoresGlobaux[a]>=scoresGlobaux[b]?a:b);
+  const labelsDOM={assertif:'Assertivité',agressif:'Agressivité',fuite:'Fuite / Soumission',abandon:'Abandon / Retrait'};
+  document.getElementById('POSITION_VIE').value = labelsDOM[dominant];
 
   btn.disabled=true; btn.textContent='Envoi en cours…';
+  msg.textContent='Merci ! Vérifiez votre boîte de réception.';
+  msg.className='modal-msg ok'; msg.style.display='block';
 
-  try {
-    const dominant=Object.keys(scoresGlobaux).reduce((a,b)=>scoresGlobaux[a]>=scoresGlobaux[b]?a:b);
-    const labelsDOM={assertif:'Assertivité',agressif:'Agressivité',fuite:'Fuite / Soumission',abandon:'Abandon / Retrait'};
+  // Le formulaire part vers Brevo (iframe cachée, on ne quitte pas la page).
+  // On affiche les résultats juste après, sans attendre de confirmation serveur
+  // (l'iframe cachée ne renvoie pas de statut exploitable en JS).
+  setTimeout(()=>{
+    fermerCapture();
+    afficherResultats(scoresGlobaux);
+  }, 1200);
 
-    // Ajout contact Brevo
-    await fetch(`${BREVO_API}/contacts`, {
-      method:'POST',
-      headers:{'api-key':BREVO_KEY,'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        email,
-        attributes:{PRENOM:prenom, POSITION_VIE:labelsDOM[dominant]},
-        listIds:[LIST_ID],
-        updateEnabled:true
-      })
-    });
-
-    // Email transactionnel Brevo
-    await fetch(`${BREVO_API}/smtp/email`, {
-      method:'POST',
-      headers:{'api-key':BREVO_KEY,'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        sender:{name:'Hugues Hippler — 3H Conseils', email:'hugues.hippler@3hconseils.com'},
-        to:[{email, name:prenom}],
-        subject:'Votre analyse — Positions de vie | 3H Conseils',
-        htmlContent:`
-<div style="font-family:Georgia,serif;max-width:580px;margin:0 auto;color:#111">
-  <div style="background:#111;padding:24px 32px;border-bottom:2px solid #B8962E">
-    <span style="color:#fff;font-size:20px;font-family:Georgia,serif">3H Conseils</span>
-    <span style="color:#B8962E;font-size:11px;margin-left:12px;letter-spacing:.1em">FORMATION & COACHING</span>
-  </div>
-  <div style="padding:32px;background:#F5F0E8">
-    <p style="font-size:16px;margin-bottom:16px">Bonjour ${prenom},</p>
-    <p style="margin-bottom:12px;line-height:1.6">Merci d'avoir réalisé le diagnostic des <strong>positions de vie</strong>.</p>
-    <p style="margin-bottom:12px;line-height:1.6">Votre position dominante est : <strong style="color:#B8962E">${labelsDOM[dominant]}</strong></p>
-    <p style="margin-bottom:24px;line-height:1.6">Vous trouverez ci-dessous le lien vers votre analyse complète (PDF) :</p>
-    <div style="text-align:center;margin-bottom:28px">
-      <a href="${PDF_URL}" style="background:#B8962E;color:#111;padding:12px 28px;text-decoration:none;font-weight:bold;font-size:14px;letter-spacing:.05em;text-transform:uppercase;display:inline-block">
-        Télécharger mon analyse PDF
-      </a>
-    </div>
-    <hr style="border:none;border-top:1px solid #D4AE5A;margin-bottom:24px">
-    <p style="line-height:1.6;margin-bottom:12px">Ce diagnostic est une photographie à un instant T. Nos positions varient selon les situations et les interlocuteurs — c'est d'ailleurs l'un des enseignements les plus riches de cet outil.</p>
-    <p style="line-height:1.6;margin-bottom:24px">Si vous souhaitez approfondir, je propose un <strong>diagnostic gratuit de 20 minutes</strong> pour échanger sur vos résultats et vos objectifs.</p>
-    <div style="text-align:center">
-      <a href="https://www.3hconseils.com/#diagnostic" style="background:#111;color:#B8962E;padding:10px 24px;text-decoration:none;font-size:13px;letter-spacing:.05em;text-transform:uppercase;display:inline-block">
-        Prendre rendez-vous
-      </a>
-    </div>
-  </div>
-  <div style="background:#111;padding:16px 32px;text-align:center">
-    <p style="color:rgba(255,255,255,.5);font-size:11px;margin:0">Hugues Hippler — 3H Conseils | hugues.hippler@3hconseils.com | www.3hconseils.com</p>
-    <p style="color:rgba(255,255,255,.3);font-size:10px;margin-top:6px">Vous recevez cet email car vous avez réalisé le diagnostic sur www.3hconseils.com. <a href="https://www.3hconseils.com" style="color:rgba(255,255,255,.3)">Se désinscrire</a></p>
-  </div>
-</div>`
-      })
-    });
-
-    msg.textContent='Email envoyé ! Vérifiez votre boîte de réception.';
-    msg.className='modal-msg ok'; msg.style.display='block';
-    btn.textContent='✓ Envoyé';
-
-    setTimeout(()=>{
-      fermerCapture();
-      afficherResultats(scoresGlobaux);
-    }, 1800);
-
-  } catch(e) {
-    msg.textContent="Une erreur s'est produite. Vos résultats s'affichent quand même.";
-    msg.className='modal-msg ko'; msg.style.display='block';
-    btn.disabled=false; btn.textContent='Réessayer';
-    setTimeout(()=>{fermerCapture();afficherResultats(scoresGlobaux);},2000);
-  }
+  return true; // laisse le <form> s'envoyer nativement vers Brevo
 }
 
 function afficherResultats(sc){
