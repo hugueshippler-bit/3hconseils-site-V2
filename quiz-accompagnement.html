@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz diagnostic – Identifier votre besoin | 3H Conseils</title>
+  <meta name="description" content="En 7 questions, identifiez si vous avez besoin d'une formation, d'un coaching ou d'une préparation mentale. Résultat immédiat et personnalisé.">
+  <link rel="canonical" href="https://www.3hconseils.com/quiz-accompagnement.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .quiz-page { max-width: 680px; margin: 0 auto; padding: 64px 24px; }
+    .quiz-progress { margin-bottom: 32px; }
+    .progress-bar { height: 3px; background: var(--black-mid); border-radius: 2px; margin-top: 8px; }
+    .progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; }
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+    .quiz-q { font-family: var(--font-title); font-size: clamp(18px, 2.5vw, 24px); font-weight: 700; color: var(--white); margin-bottom: 28px; line-height: 1.3; }
+    .quiz-options { display: flex; flex-direction: column; gap: 12px; }
+    .quiz-option {
+      background:var(--black);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: #F0EBE2;
+      text-align: left;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .quiz-option:hover { border-color: var(--gold); background: var(--gold-muted); color: var(--white); }
+    .quiz-option.selected { border-color: var(--gold); background: var(--gold-muted); color: var(--white); }
+    .quiz-nav { display: flex; gap: 12px; margin-top: 28px; align-items: center; }
+    .quiz-back { background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: var(--font-title); font-size: 14px; padding: 10px 20px; border-radius: 999px; cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+    .quiz-back:hover { border-color: var(--gold); color: var(--gold); }
+    .quiz-next { }
+    .result-card { background:var(--black); border: 1px solid var(--gold-border); border-radius: var(--radius); padding: 32px; margin-bottom: 20px; }
+    .result-badge { display: inline-block; background: var(--gold-muted); border: 1px solid var(--gold-border); color: var(--gold); font-family: var(--font-title); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; margin-bottom: 16px; }
+    .result-title { font-family: var(--font-title); font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
+    .result-desc { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 20px; }
+  </style>
+  <!-- JSON-LD WebPage : signal de fraîcheur (dateModified) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.3hconseils.com/quiz-accompagnement.html#webpage",
+  "url": "https://www.3hconseils.com/quiz-accompagnement.html",
+  "name": "Quiz diagnostic – Identifier votre besoin | 3H Conseils",
+  "inLanguage": "fr-FR",
+  "isPartOf": {
+    "@id": "https://www.3hconseils.com/#website"
+  },
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-08-21"
+}
+  </script>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-180.png">
+</head>
+<body style="background:#111111; color:#F0EBE2;">
+<a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+<header class="site-header" role="banner">
+  <div class="site-brand">
+    <a href="index.html" aria-label="3H Conseils – retour à l'accueil">
+      <img src="assets/img/logo-3hconseils-v2.png" alt="3H Conseils – Coaching & Formation" width="110" height="110">
+    </a>
+  </div>
+  <div class="nav-header-mobile">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu" onclick="toggleMenu(this)">☰ Menu</button>
+  </div>
+  <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+    <a href="formations.html">Formations</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="preparation-mentale.html">Préparation mentale</a>
+    <a href="quiz.html" class="active">Quiz</a>
+    <a href="qui-sommes-nous.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <div class="quiz-page" style="background:#111111; color:#F5F0E8;">
+    <p class="slogan" style="margin-bottom:8px;">Diagnostic personnalisé</p>
+    <h1 style="font-size:clamp(24px,3vw,36px); margin-bottom:4px; color:#FFFFFF;">Identifier votre besoin</h1>
+    <p style="color:rgba(255,255,255,0.75); margin-bottom:32px;">7 questions pour vous orienter vers la solution la plus adaptée à votre situation.</p>
+
+    <div class="quiz-progress" aria-live="polite">
+      <span id="step-label" style="font-size:13px; color:rgba(255,255,255,0.65); font-family:var(--font-title); letter-spacing:0.06em; text-transform:uppercase;">Question 1 / 7</span>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:14%"></div></div>
+    </div>
+
+    <form id="quiz-form" novalidate>
+
+      <!-- Q1 -->
+      <div class="quiz-step active" data-step="1">
+        <p class="quiz-q">Quelle est votre situation principale en ce moment ?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-value="dirigeant">Je suis dirigeant(e) et je veux progresser sur ma propre posture</button>
+          <button type="button" class="quiz-option" data-value="manager">Je manage une équipe qui dysfonctionne ou qui manque d'efficacité</button>
+          <button type="button" class="quiz-option" data-value="rh">Je suis RH / responsable formation et je cherche une solution pour mes équipes</button>
+          <button type="button" class="quiz-option" data-value="sportif">Je suis sportif(ve) ou je prépare un enjeu de performance important</button>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="quiz-step" data-step="2">
+        <p class="quiz-q">Quel est le problème central que vous voulez résoudre ?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-value="communication">Les gens ne se parlent pas bien — conflits, malentendus, tensions</button>
+          <button type="button" class="quiz-option" data-value="management">Le management manque d'autorité, de clarté ou de structure</button>
+          <button type="button" class="quiz-option" data-value="emotions">Les émotions et le stress freinent les performances</button>
+          <button type="button" class="quiz-option" data-value="organisation">L'organisation et la priorisation sont chaotiques</button>
+          <button type="button" class="quiz-option" data-value="prise-de-parole">La prise de parole, l'impact à l'écrit ou en réunion est insuffisant</button>
+          <button type="button" class="quiz-option" data-value="performance-mentale">La performance sous pression, la concentration, la confiance</button>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="quiz-step" data-step="3">
+        <p class="quiz-q">À qui s'adresse principalement votre besoin ?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-value="moi">À moi seul(e) — c'est un besoin personnel ou de dirigeant</button>
+          <button type="button" class="quiz-option" data-value="equipe-5">À une équipe de moins de 10 personnes</button>
+          <button type="button" class="quiz-option" data-value="equipe-20">À une équipe de 10 à 30 personnes</button>
+          <button type="button" class="quiz-option" data-value="organisation">À plusieurs équipes ou à toute l'organisation</button>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="quiz-step" data-step="4">
+        <p class="quiz-q">Quel format d'intervention vous conviendrait le mieux ?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-value="coaching-individuel">Un accompagnement individuel régulier — séances en tête-à-tête</button>
+          <button type="button" class="quiz-option" data-value="formation-groupe">Une formation collective avec exercices et mises en situation</button>
+          <button type="button" class="quiz-option" data-value="les-deux">Une combinaison des deux — formation + suivi individuel</button>
+          <button type="button" class="quiz-option" data-value="pas-sur">Je ne sais pas encore — j'ai besoin d'un avis expert</button>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="quiz-step" data-step="5">
+        <p class="quiz-q">Dans quel délai souhaitez-vous que les choses changent ?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-value="urgent">C'est urgent — la situation est critique, il faut agir vite</button>
+          <button type="button" class="quiz-option" data-value="1-3mois">Dans 1 à 3 mois — je veux planifier sereinement</button>
+          <button type="button" class="quiz-option" data-value="long-terme">Je construis une transformation durable sur 6 mois et plus</button>
+          <button type="button" class="quiz-option" data-value="exploration">Je suis en phase d'exploration — pas encore de calendrier précis</button>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="quiz-step" data-step="6">
+        <p class="quiz-q">Avez-vous déjà bénéficié d'une formation ou d'un coaching professionnel ?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-value="jamais">Non, c'est une première — je veux comprendre comment ça fonctionne</button>
+          <button type="button" class="quiz-option" data-value="catalogue">Oui, des formations catalogue standard — je cherche quelque chose de plus adapté</button>
+          <button type="button" class="quiz-option" data-value="mesure">Oui, des accompagnements sur mesure — j'en connais la valeur</button>
+          <button type="button" class="quiz-option" data-value="decu">Oui, mais j'ai été déçu(e) — je cherche une approche différente</button>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="quiz-step" data-step="7">
+        <p class="quiz-q">Ce qui compte le plus pour vous dans cet accompagnement :</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-value="resultats-rapides">Des résultats concrets rapidement, pas de la théorie</button>
+          <button type="button" class="quiz-option" data-value="sur-mesure">Une approche vraiment sur-mesure, adaptée à ma réalité</button>
+          <button type="button" class="quiz-option" data-value="durabilite">Des changements durables, pas des effets de mode</button>
+          <button type="button" class="quiz-option" data-value="confiance">Un expert en qui j'ai confiance, pas un prestataire parmi d'autres</button>
+        </div>
+      </div>
+
+      <!-- RÉSULTAT -->
+      <div class="quiz-step" id="quiz-result" data-step="8">
+        <div id="result-content"></div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;">
+          <a href="https://cal.eu/3hconseils/diagnostic-gratuit-20-minutes" class="btn-primary" target="_blank" rel="noopener">Réserver un diagnostic gratuit</a>
+          <button type="button" class="btn" onclick="resetQuiz()">Refaire le quiz</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-section">
+      <h3>3H Conseils</h3>
+      <p>Coaching · Formation · Préparation mentale</p>
+      <p>300 rue des Cumines, 42580 L'Étrat</p>
+      <p><a href="tel:+33609982202">06 09 98 22 02</a></p>
+      <p><a href="mailto:hugues.hippler@3hconseils.com">hugues.hippler@3hconseils.com</a></p>
+      <div class="footer-social" aria-label="Réseaux sociaux">
+        <a href="https://www.linkedin.com/in/hugues-hippler/" aria-label="3H Conseils sur LinkedIn" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="coaching.html">Coaching</a></li>
+        <li><a href="preparation-mentale.html">Préparation mentale</a></li>
+        <li><a href="quiz.html">Quiz diagnostic</a></li>
+        <li><a href="qui-sommes-nous.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="presse.html">Presse &amp; médias</a></li>
+        <li><a href="livre-blanc.html">Guide gratuit</a></li>
+        <li><a href="assets/docs/catalogue-3hconseils-2026-s1.pdf" target="_blank" rel="noopener">Catalogue PDF</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Légal &amp; qualité</h3>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="confidentialite.html">Politique RGPD</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="accessibilite-handicap.html">Accessibilité</a></li>
+        <li><a href="qualiopi-opco.html">Qualiopi &amp; OPCO</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> 3H Conseils – Hugues Hippler</span>
+    <span>300 rue des Cumines · 42580 L'Étrat · <a href="tel:+33609982202">06 09 98 22 02</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+function toggleMenu(btn){
+  const nav = document.getElementById('navLinks');
+  const open = nav.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', open);
+}
+
+// Quiz logic
+const answers = {};
+let currentStep = 1;
+const totalSteps = 7;
+
+function goToStep(n){
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  const target = document.querySelector('[data-step="'+n+'"]');
+  if(target){ target.classList.add('active'); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  const pct = n <= totalSteps ? Math.round((n/totalSteps)*100) : 100;
+  document.getElementById('progress-fill').style.width = pct+'%';
+  const label = n <= totalSteps ? 'Question '+n+' / '+totalSteps : 'Votre résultat';
+  document.getElementById('step-label').textContent = label;
+  currentStep = n;
+}
+
+document.querySelectorAll('.quiz-option').forEach(btn => {
+  btn.addEventListener('click', function(){
+    const step = this.closest('.quiz-step').dataset.step;
+    // Désélectionner les autres de cette étape
+    this.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    answers[step] = this.dataset.value;
+    // Avancer auto après 300ms
+    setTimeout(() => {
+      if(parseInt(step) < totalSteps){
+        goToStep(parseInt(step)+1);
+      } else {
+        showResult();
+      }
+    }, 280);
+  });
+});
+
+function showResult(){
+  const r = document.getElementById('result-content');
+  // Logique de recommandation basée sur les réponses
+  const pb = answers[2]; // problème central
+  const dest = answers[3]; // à qui
+  const format = answers[4]; // format
+
+  let reco = [];
+
+  // Formation si équipe ou RH
+  if(dest === 'equipe-5' || dest === 'equipe-20' || dest === 'organisation' || answers[1] === 'rh'){
+    if(pb === 'communication'){
+      reco.push({ type:'Formation', titre:'Formation Communication & Relations professionnelles', desc:'Assertivité, gestion des conflits, communication non verbale. Sur mesure pour votre équipe.', url:'formation-gestion-conflits-saint-etienne.html' });
+    } else if(pb === 'management'){
+      reco.push({ type:'Formation', titre:'Formation Management & Posture', desc:'Structurer, décider, cadrer, mobiliser. Construire une posture managériale cohérente et durable.', url:'formation-management-loire.html' });
+    } else if(pb === 'prise-de-parole'){
+      reco.push({ type:'Formation', titre:'Formation Prise de parole & Communication écrite', desc:'Impact en réunion, conférence, écrits professionnels. Structure et confiance.', url:'formation-prise-parole-lyon.html' });
+    } else if(pb === 'organisation'){
+      reco.push({ type:'Formation', titre:'Formation Organisation & Efficacité', desc:'Priorisation, gestion du temps, réduction de la charge mentale. Des résultats dès le lendemain.', url:'formation-entreprise-etrat.html' });
+    } else if(pb === 'emotions'){
+      reco.push({ type:'Formation', titre:'Formation Émotions, Stress & Confiance', desc:'Comprendre ses émotions, réduire le stress, retrouver la marge de manœuvre au quotidien.', url:'formation-communication-etrat.html' });
+    } else {
+      reco.push({ type:'Formation', titre:'Formation professionnelle sur mesure', desc:'32 formations, dispensées par un organisme certifié Qualiopi, sur les compétences humaines essentielles.', url:'formations.html' });
+    }
+  }
+
+  // Coaching si individuel ou dirigeant
+  if(dest === 'moi' || answers[1] === 'dirigeant' || format === 'coaching-individuel' || format === 'les-deux'){
+    reco.push({ type:'Coaching', titre:'Coaching professionnel individuel', desc:'Un accompagnement structuré pour clarifier votre posture, vos décisions et votre impact. Mieux se connaître, comprendre les autres, se dépasser.', url:'coaching.html' });
+  }
+
+  // Prépa mentale si performance ou sportif
+  if(pb === 'performance-mentale' || answers[1] === 'sportif'){
+    reco.push({ type:'Préparation mentale', titre:'Préparation mentale', desc:"L'état d'esprit de la performance. Concentration, gestion de la pression, confiance. Pour sportifs, dirigeants et équipes.", url:'preparation-mentale.html' });
+  }
+
+  // Fallback
+  if(reco.length === 0){
+    reco.push({ type:'Diagnostic', titre:'Diagnostic personnalisé gratuit', desc:'Votre situation mérite un échange direct. Réservez 20 minutes pour qu'Hugues analyse votre contexte et vous oriente précisément.', url:'https://cal.eu/3hconseils/diagnostic-gratuit-20-minutes' });
+  }
+
+  let html = '<h2 style="color:var(--white); font-size:22px; margin-bottom:8px;">Votre recommandation</h2><div class="gold-divider" style="margin-bottom:24px;"></div>';
+
+  reco.slice(0,2).forEach(item => {
+    html += `<div class="result-card">
+      <span class="result-badge">${item.type}</span>
+      <div class="result-title">${item.titre}</div>
+      <div class="result-desc">${item.desc}</div>
+      <a href="${item.url}" class="btn" style="font-size:14px;">En savoir plus →</a>
+    </div>`;
+  });
+
+  r.innerHTML = html;
+  if(window.ThreeHQuiz) window.ThreeHQuiz.setDoneQuiz();
+  goToStep(8);
+}
+
+function resetQuiz(){
+  Object.keys(answers).forEach(k => delete answers[k]);
+  document.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
+  goToStep(1);
+}
+</script>
+</body>
+</html>

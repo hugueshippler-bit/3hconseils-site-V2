@@ -26,7 +26,7 @@
     // Boutons ouvrir le quiz
     document.querySelectorAll("[data-quiz-open]").forEach(btn => {
       btn.addEventListener("click", (e) => {
-        if(btn.tagName === "A" && btn.getAttribute("href") !== "quiz.html"){
+        if(btn.tagName === "A" && btn.getAttribute("href") !== "quiz-accompagnement.html"){
           e.preventDefault();
           showOverlay();
         }
