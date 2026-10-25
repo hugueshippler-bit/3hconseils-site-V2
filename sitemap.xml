@@ -152,26 +152,6 @@
   </url>
 
   <!-- Pages légales (exclues du référencement prioritaire) -->
-  <url>
-    <loc>https://www.3hconseils.com/mentions-legales.html</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-
-  <url>
-    <loc>https://www.3hconseils.com/confidentialite.html</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-
-  <url>
-    <loc>https://www.3hconseils.com/accessibilite-handicap.html</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
 
 
   <!-- Pages-ressources -->
